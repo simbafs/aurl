@@ -7,10 +7,8 @@
 	<body>
 		<div class="center">
 			<h1><%= title %></h1>
-			<form action="/c" method="post">
-				<input name="url" id="url" type="url" placeholder="URL">
-				<button id="ok" type="submit">OK</button>
-			<form>
+			<h2><a href="<%= url %>"><%= url %></a></h2>
+			<a href="<%= baseUrl %>/<%= code %>"><%= code %></a>
 		</div>
 	</body>
 </html>
