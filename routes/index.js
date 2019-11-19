@@ -28,7 +28,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:code', async (req, res, next) => {
   // check if code is exist
-  await const record = RecordModule.findOne({code: req.params.code}));
+  const record = await RecordModule.findOne({code: req.params.code});
   if(!record) return res.status(404).render('error', {
     title:'page not found',
     code: req.params.code
