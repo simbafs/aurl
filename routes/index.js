@@ -26,6 +26,18 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
 
+router.get('/:code', async (req, res, next) => {
+  // check if code is exist
+  await const record = RecordModule.findOne({code: req.params.code}));
+  if(!record) return res.status(404).render('error', {
+    title:'page not found',
+    code: req.params.code
+  });
+  
+  //redirect to url
+  res.redirect(record.url);
+});
+
 router.post('/c', async (req, res, next) => {
 	const code = getCode();
 	const url = req.body.url;
