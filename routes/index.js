@@ -23,7 +23,7 @@ const getCode = () => base58.encode(crypto.randomBytes(4));
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'URL shortener' });
 });
 
 router.get('/:code', async (req, res, next) => {
