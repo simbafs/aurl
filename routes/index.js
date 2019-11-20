@@ -27,10 +27,12 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:code', async (req, res, next) => {
+	const code = req.params.code;
+
 	// check if code is exist
-	const record = await RecordModule.findOne({code: req.params.code});
+	const record = await RecordModule.findOne({code: code});
 	if(!record) return res.status(404).render('notFound', {
-		code: req.params.code
+		code: code
 	});
 	
 	//redirect to url
@@ -50,8 +52,7 @@ router.post('/c', async (req, res, next) => {
 
 	// check if url is exist
 	
-	const record = await RecordModule.findOne({url: req.body.url});
-	console.log('RECORD ', req.body.url);
+	const record = await RecordModule.findOne({url: url});
 	if(record) return res.render('code', {
 		title: 'url shortener',
 		code: record.code,
@@ -59,6 +60,7 @@ router.post('/c', async (req, res, next) => {
 		baseUrl: process.env.BASEURL
 	});
 
+	// save record
 	const recode = new RecordModule({
 		code: code,
 		url: url
@@ -76,7 +78,5 @@ router.post('/c', async (req, res, next) => {
 		res.render('error', e);	
 	});
 });
-
-
 
 module.exports = router;
