@@ -11,7 +11,7 @@ require('dotenv').config();
 mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
-	}, () => {console.log('DB connected')});;
+	}, () => {console.log('DB connected')});
 
 // functions
 const isUrl = (url) => {
@@ -64,5 +64,7 @@ router.post('/c', async (req, res, next) => {
 		});
 	});
 });
+
+
 
 module.exports = router;

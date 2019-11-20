@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-	"test": "nodemon start"
+    "test": "nodemon start"
   },
   "dependencies": {
     "base-58": "0.0.1",
