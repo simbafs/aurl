@@ -11,6 +11,10 @@ cat BASEURL=/your/domain/name
 npm start
 ```
 
+## TODO
+1. brewser addons
+2. click to copy
+
 ## api
 [url](https://url.ckcsc.net/api)
 | api | args | result |
