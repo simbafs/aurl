@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const base58 = require('base-58');
 const {RecordModule} = require('../schema/record.js');
 const mongoose = require('mongoose');
+const Qrcode = require('qrcode');
 
 // load env
 require('dotenv').config();
@@ -65,13 +66,18 @@ router.post('/c', async (req, res, next) => {
 		code: code,
 		url: url
 	});
+	var qrcode;
+	await Qrcode.toDataURL('https://url.ckcsc.net/${code}')
+		.then((err, url) => qrcode = url);
 
+	console.log(qrcode);
 	await recode.save().then(() => {
 		res.render('code', {
 			title: 'url shortener',
 			code: code,
 			url: url,
-			baseUrl: process.env.BASEURL
+			baseUrl: process.env.BASEURL,
+			qrcode: qrcode
 		});
 	})
 	.catch((e)=>{
