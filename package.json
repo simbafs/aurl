@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "nodemon start"
   },
   "dependencies": {
@@ -16,6 +16,7 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.7.11",
     "morgan": "~1.9.1",
+    "nodemon": "^2.0.0",
     "qrcode": "^1.4.4"
   }
 }
