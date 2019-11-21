@@ -22,6 +22,13 @@ const isUrl = (url) => {
 
 const getCode = () => base58.encode(crypto.randomBytes(4));
 
+const getQrcode = async (code) => {
+	var qrcode;
+	await Qrcode.toDataURL(`https://url.ckcsc.net/${code}`)
+		.then((url) => {qrcode = url; console.log(url)});
+	return qrcode;
+}
+
 /* GET home page. */
 router.get('/', (req, res, next) => {
 	res.render('index', { title: 'URL shortener' });
@@ -58,7 +65,8 @@ router.post('/c', async (req, res, next) => {
 		title: 'url shortener',
 		code: record.code,
 		url: record.url,
-		baseUrl: process.env.BASEURL
+		baseUrl: process.env.BASEURL,
+		qrcode: getQrcode(record.code)
 	});
 
 	// save record
@@ -66,23 +74,20 @@ router.post('/c', async (req, res, next) => {
 		code: code,
 		url: url
 	});
-	var qrcode;
-	await Qrcode.toDataURL('https://url.ckcsc.net/${code}')
-		.then((err, url) => qrcode = url);
 
-	console.log(qrcode);
-	await recode.save().then(() => {
-		res.render('code', {
-			title: 'url shortener',
-			code: code,
-			url: url,
-			baseUrl: process.env.BASEURL,
-			qrcode: qrcode
+	await recode.save()
+		.then(() => {
+			res.render('code', {
+				title: 'url shortener',
+				code: code,
+				url: url,
+				baseUrl: process.env.BASEURL,
+				qrcode: getQrcode(code)
+			});
+		})
+		.catch((e)=>{
+			res.render('error', e);	
 		});
-	})
-	.catch((e)=>{
-		res.render('error', e);	
-	});
 });
 
 module.exports = router;
