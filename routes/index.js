@@ -66,7 +66,7 @@ router.post('/c', async (req, res, next) => {
 		code: record.code,
 		url: record.url,
 		baseUrl: process.env.BASEURL,
-		qrcode: getQrcode(record.code)
+		qrcode: await getQrcode(record.code)
 	});
 
 	// save record
@@ -76,13 +76,13 @@ router.post('/c', async (req, res, next) => {
 	});
 
 	await recode.save()
-		.then(() => {
+		.then(async () => {
 			res.render('code', {
 				title: 'url shortener',
 				code: code,
 				url: url,
 				baseUrl: process.env.BASEURL,
-				qrcode: getQrcode(code)
+				qrcode: await getQrcode(code)
 			});
 		})
 		.catch((e)=>{
