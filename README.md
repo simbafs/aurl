@@ -24,9 +24,3 @@ backdoor=/backdoor/token
 1. brewser addons
 2. click to copy
 
-## api
-[url](https://url.ckcsc.net/api)
-
-| api | args | result |
-| :--- | :--- | :--- |
-| new | u {} | code or error {json}| 
