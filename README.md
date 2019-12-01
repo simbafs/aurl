@@ -26,6 +26,7 @@ backdoor=/backdoor/token
 
 ## api
 [url](https://url.ckcsc.net/api)
+
 | api | args | result |
 | :--- | :--- | :--- |
 | new | u {} | code or error {json}| 
