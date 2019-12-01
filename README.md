@@ -11,6 +11,15 @@ cat BASEURL=/your/domain/name
 npm start
 ```
 
+## .env
+this project need a .env file to tell the db url and something can't public on internet  
+please conplete the following
+```env
+DB=/url/to/your/db
+BASEURL=/your/host/url
+backdoor=/backdoor/token
+```
+
 ## TODO
 1. brewser addons
 2. click to copy

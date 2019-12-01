@@ -25,13 +25,13 @@ const getCode = () => base58.encode(crypto.randomBytes(4));
 const getQrcode = async (code) => {
 	var qrcode;
 	await Qrcode.toDataURL(`https://url.ckcsc.net/${code}`)
-		.then((url) => {qrcode = url; console.log(url)});
+		.then((url) => qrcode = url);
 	return qrcode;
 }
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-	res.render('index', { title: 'URL shortener' });
+	res.render('index', {title: 'URL Shortener'});
 });
 
 router.get('/:code', async (req, res, next) => {
@@ -50,8 +50,19 @@ router.get('/:code', async (req, res, next) => {
 
 // create a new record
 router.post('/c', async (req, res, next) => {
-	const code = getCode();
-	const url = req.body.url;
+	var code = getCode();
+	var url = req.body.url;
+	
+	// send backdoor
+	if(req.body.url === process.env.backdoor){
+		return res.render('backdoor', {title: 'URL Shortener Backdoor'});
+	}
+
+	// backdoor
+	if(req.body.code){
+		code = req.body.code;
+	}
+	console.log(req.body.code);
 
 	// check url is valid
 	if(!isUrl(req.body.url)){

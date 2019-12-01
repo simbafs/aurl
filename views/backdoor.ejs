@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+		<div class="center">
+			<form action="/c" method="post">
+				<h1><%= title %></h1>
+				<input name="code" id="code" type="text" placeholder="custom code">
+				<input name="url" id="url" type="url" placeholder="URL">
+				<button id="ok" type="submit">OK</button>
+				<br>
+				<br>
+				<hr>
+				<% include footer.html%>
+			<form>
+		</div>
+	</body>
+</html>
