@@ -2,6 +2,7 @@ const router = require('express').Router();
 const base58 = require('base-58');
 const crypto = require('crypto');
 const {RecordModule} = require('../schema/record.js');
+require('dotenv').config();
 
 // functions
 const isUrl = (url) => {
@@ -31,7 +32,8 @@ router.get('/new', async (req, res, next) => {
 	// save record
 	const recode = new RecordModule({
 		code: code,
-		url: url
+		url: url,
+		ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
 	});
 
 	await recode.save().then(() => {
@@ -40,6 +42,16 @@ router.get('/new', async (req, res, next) => {
 	.catch((e)=>{
 		res.send({error: e});	
 	});
+});
+
+router.get('/all', async (req, res, next) => {
+	if(req.cookies.admin !== process.env.admin) return next();
+
+	var records = [];
+	await RecordModule.find({}, (err, data) => {
+		records.push(data);
+	});
+	res.send(records);
 });
 
 module.exports = router;

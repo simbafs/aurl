@@ -24,7 +24,7 @@ const getCode = () => base58.encode(crypto.randomBytes(4));
 
 const getQrcode = async (code) => {
 	var qrcode;
-	await Qrcode.toDataURL(`https://url.ckcsc.net/${code}`)
+	await Qrcode.toDataURL(`${process.env.BASEURL}/${code}`)
 		.then((url) => qrcode = url);
 	return qrcode;
 }
@@ -83,7 +83,8 @@ router.post('/c', async (req, res, next) => {
 	// save record
 	const recode = new RecordModule({
 		code: code,
-		url: url
+		url: url,
+		ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
 	});
 
 	await recode.save()

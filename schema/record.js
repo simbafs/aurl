@@ -12,8 +12,11 @@ var RecordSchema = new mongoose.Schema({
 	date: {
 		type: Date,
 		default: Date.now
+	},
+	ip: {
+		type: String,
+		required: true
 	}
-
 });
 
 module.exports = {

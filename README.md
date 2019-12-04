@@ -18,9 +18,10 @@ please conplete the following
 DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
+admin=your admin token
 ```
 
 ## TODO
 1. brewser addons
 2. click to copy
-
+3. add ip record
