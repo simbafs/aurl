@@ -21,7 +21,11 @@ backdoor=/backdoor/token
 admin=your admin token
 ```
 
+## CHANGELOG
+2019/12/4
+add clipboard.js
+
 ## TODO
 1. brewser addons
-2. click to copy
+2. click to copy (finish)
 3. add ip record

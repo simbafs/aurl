@@ -3,18 +3,47 @@
 	<head>
 		<title><%= title %></title>
 		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<style>
+button img {
+	height: 15px;
+	width: 15px;
+}
+
+button {
+	background-color: white;
+	border: white;
+	display: inline-block;
+}
+
+.tooltip:hover::before{
+	content: attr(data-tooltip);
+	position: absolute;
+	margin-left: 14px;
+	white-space: pre;
+}
+		</style>
 	</head>
 	<body>
 		<div class="center">
 			<h1><%= title %></h1>
 			<h2><a href="<%= url %>"><%= url %></a></h2>
-			<a href="<%= baseUrl %>/<%= code %>"><%= code %></a>
+			<a id="code" href="<%= baseUrl %>/<%= code %>"><%= baseUrl %>/<%= code %></a>
+			<button class="tooltip btn" data-clipboard-target="#code" data-tooltip="copy">
+				    <img src="./clip.svg" alt="Copy to clipboard">
+			</button>
 			<img src="<%= qrcode %>">
 		</div>
 
 		<script src="/javascripts/clipboard.min.js"></script>
 		<script>
-			//new ClipboardJS('');
+			var clipboard = new ClipboardJS('.btn');
+			clipboard.on('success', function(e) {
+				    console.info('Action:', e.action);
+				    console.info('Text:', e.text);
+				    console.info('Trigger:', e.trigger);
+
+				    e.clearSelection();
+			});
 		</script>
 	</body>
 </html>
