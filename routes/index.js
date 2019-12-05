@@ -53,6 +53,11 @@ router.post('/c', async (req, res, next) => {
 	var code = getCode();
 	var url = req.body.url;
 	
+	// check url is not empty
+	if(req.body.url === ''){
+		return res.redirect('/');
+	}
+
 	// send backdoor
 	if(req.body.url === process.env.backdoor){
 		return res.render('backdoor', {title: 'URL Shortener Backdoor'});

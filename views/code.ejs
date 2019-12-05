@@ -24,14 +24,16 @@ button {
 		</style>
 	</head>
 	<body>
-		<div class="center">
+		<div id="content" nclass="center">
 			<h1><%= title %></h1>
-			<h2><a href="<%= url %>"><%= url %></a></h2>
-			<a id="code" href="<%= baseUrl %>/<%= code %>"><%= baseUrl %>/<%= code %></a>
+			<h2><a target="_blank" href="<%= url %>"><%= url %></a></h2>
+			<a target="_blank" id="code" href="<%= baseUrl %>/<%= code %>"><%= baseUrl %>/<%= code %></a>
 			<button class="tooltip btn" data-clipboard-target="#code" data-tooltip="copy">
 				    <img src="./clip.svg" alt="Copy to clipboard">
 			</button>
 			<img src="<%= qrcode %>">
+			<hr>
+			<% include footer.html%>
 		</div>
 
 		<script src="/javascripts/clipboard.min.js"></script>
