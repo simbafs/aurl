@@ -10,26 +10,61 @@
 	overflow-y: auto;
 	padding: 5px;
 }
+
+#content, #around{
+	width: 100%;
+	text-align: start;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.row div {
+	overflow-x: auto;
+	margin: 10px;
+}
+
+.code {
+	width: 10%;
+}
+
+.url, .date {
+	width: 35%;
+}
+
+.ip {
+	width: 20%
+}
+
+.row {
+	background-color: #ddddff;
+}
+
+.row:nth-child(even) {
+	background-color: #ddffdd;
+}
 </style>
 	</head>
 	<body>
-		<div id="content" nclass="center">
-			<table>
-				<tr>
-					<td>code</td>
-					<td>url</td>
-					<td>date</td>
-					<td>ip</td>
-				</tr>
+		<div id="content" class="center">
+			<div id="around">
+				<div class="row">
+					<div class="code">CODE</div>
+					<div class="url">URL</div>
+					<div class="date">DATE</div>
+					<div class="ip">IP</div>
+				</div>
 				<% for(var i of records){ %>
-					<tr>
-						<td><%= i.code %></td>
-						<td><%= i.url %></td>
-						<td><%= i.date %></td>
-						<td><%= i.up %></td>
-					</td>
+				<div class="row">
+					<div class="code"><%= i.code %></div>
+					<div class="url"><a href="<%= i.url %>"><%= i.url %></a></div>
+					<div class="date"><%= i.date %></div>
+					<div class="ip"><%= i.ip %></div>
+				</div>
 				<% } %>
-			</table>
+			</div>
 		</div>
 	</body>
 </html>
