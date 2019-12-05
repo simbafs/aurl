@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+<style>
+#content {
+	height: 60vh;
+	width: 80vw;
+	overflow-y: auto;
+	padding: 5px;
+}
+</style>
+	</head>
+	<body>
+		<div id="content" nclass="center">
+			<table>
+				<tr>
+					<td>code</td>
+					<td>url</td>
+					<td>date</td>
+					<td>ip</td>
+				</tr>
+				<% for(var i of records){ %>
+					<tr>
+						<td><%= i.code %></td>
+						<td><%= i.url %></td>
+						<td><%= i.date %></td>
+						<td><%= i.up %></td>
+					</td>
+				<% } %>
+			</table>
+		</div>
+	</body>
+</html>

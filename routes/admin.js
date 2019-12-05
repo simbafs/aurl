@@ -6,9 +6,9 @@ router.get('/', async (req, res, next) => {
 	// check if cookie is admin
 	if(req.cookies.admin !== process.env.admin) return next();
 
-	console.log('ip', req.headers['x-forwarded-for'] || req.connection.remoteAddress);
-	var records = [];
+	// console.log('ip', req.headers['x-forwarded-for'] || req.connection.remoteAddress);
 	await RecordModule.find({}, (err, data) => {
+		var records = [];
 		data.forEach((item)=>{
 			records.push({
 				code: item.code,
@@ -17,8 +17,11 @@ router.get('/', async (req, res, next) => {
 				ip: item.ip || 'none'
 			});
 		});
+		res.render('admin', {
+			title: 'URL shortener',
+			records: records
+		});
 	});
-	res.send(records);
 });
 
 module.exports = router;
