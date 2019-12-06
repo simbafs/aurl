@@ -1,12 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
-		<!--
-		<link rel="manifest" href="/manifest.json"/>
-		-->
-	</head>
+	<%- include(include/head.html) %>
 	<body>
 		<div id="content" nclass="center">
 			<form action="/c" method="post">
@@ -16,7 +10,7 @@
 				<br>
 				<br>
 				<hr>
-				<% include footer.html%>
+				<% include(include/footer.html) %>
 			<form>
 		</div>
 	</body>

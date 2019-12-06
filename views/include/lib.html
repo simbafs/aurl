@@ -1,0 +1,4 @@
+<% for(var i of ['alertify.js', 'clipboard.js', 'jquery.js']){ %>
+<script src="/lib/<%= i %>"></script>
+	<script>console.log('<%= i %> loaded')</script>
+<% } %>
