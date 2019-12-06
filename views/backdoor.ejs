@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<% include include/head.html %>
+		<style>
+			#code {
+				width: 10%
+			}
+		</style>
 	</head>
 	<body>
-		<div class="center">
+		<div id="content" class="center">
 			<form action="/c" method="post">
 				<h1><%= title %></h1>
-				<input name="code" id="code" type="text" placeholder="custom code">
+				<input name="code" id="code" type="text" placeholder="code">
 				<input name="url" id="url" type="url" placeholder="URL">
 				<button id="ok" type="submit">OK</button>
 				<br>
 				<br>
 				<hr>
-				<% include footer.html%>
+				<% include include/footer.html%>
 			<form>
 		</div>
 	</body>

@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><%= title %></title>
-		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<% include include/head.html %>
 		<style>
 button img {
 	height: 15px;
@@ -33,10 +32,10 @@ button {
 			</button>
 			<img src="<%= qrcode %>">
 			<hr>
-			<% include footer.html%>
+			<% include include/footer.html %>
 		</div>
 
-		<script src="/javascripts/clipboard.min.js"></script>
+		<% include include/lib.html %>
 		<script>
 			new ClipboardJS('.btn');
 		</script>

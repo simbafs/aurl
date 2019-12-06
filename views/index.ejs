@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<%- include(include/head.html) %>
+	<head>
+		<% include include/head.html  %>
+	</head>
 	<body>
 		<div id="content" nclass="center">
 			<form action="/c" method="post">
@@ -10,8 +12,9 @@
 				<br>
 				<br>
 				<hr>
-				<% include(include/footer.html) %>
+				<% include include/footer.html  %>
 			<form>
 		</div>
+		<% include include/lib.html  %>
 	</body>
 </html>
