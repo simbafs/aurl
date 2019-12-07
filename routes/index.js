@@ -4,6 +4,7 @@ const base58 = require('base-58');
 const {RecordModule} = require('../schema/record.js');
 const mongoose = require('mongoose');
 const Qrcode = require('qrcode');
+const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 
 // load env
 require('dotenv').config();
@@ -31,7 +32,10 @@ const getQrcode = async (code) => {
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-	res.render('index', {title: 'URL Shortener'});
+	res.render('index', {
+		title: 'URL Shortener',
+		ip: ip(req)
+	});
 });
 
 router.get('/:code', async (req, res, next) => {
@@ -60,7 +64,10 @@ router.post('/c', async (req, res, next) => {
 
 	// send backdoor
 	if(req.body.url === process.env.backdoor){
-		return res.render('backdoor', {title: 'URL Shortener Backdoor'});
+		return res.render('backdoor', {
+			title: 'URL Shortener Backdoor',
+			ip: ip(req)
+		});
 	}
 
 	// backdoor
@@ -82,14 +89,15 @@ router.post('/c', async (req, res, next) => {
 		code: record.code,
 		url: record.url,
 		baseUrl: process.env.BASEURL,
-		qrcode: await getQrcode(record.code)
+		qrcode: await getQrcode(record.code),
+		ip: ip(req)
 	});
 
 	// save record
 	const recode = new RecordModule({
 		code: code,
 		url: url,
-		ip: req.headers['x-forwarded-for'] || req.connection.remoteAddress
+		ip: ip(req)
 	});
 
 	await recode.save()
@@ -99,7 +107,8 @@ router.post('/c', async (req, res, next) => {
 				code: code,
 				url: url,
 				baseUrl: process.env.BASEURL,
-				qrcode: await getQrcode(code)
+				qrcode: await getQrcode(code),
+				ip: ip(req)
 			});
 		})
 		.catch((e)=>{
