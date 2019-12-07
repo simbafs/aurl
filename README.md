@@ -1,3 +1,4 @@
+![icon](./public/images/icon-1024.png)
 ![url shortener](./index.png)
 
 # url-shortener
