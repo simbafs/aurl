@@ -1,5 +1,7 @@
-![icon](./public/images/icon-1024.png)
-![url shortener](./index.png)
+<div align="center">
+	<img src="./public/images/icon-1024.png" alt="ckcsc url" width=100>
+	<h1>CKCSC URL</h1>
+</div>
 
 # url-shortener
 url shortener written in nodejs
