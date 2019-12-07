@@ -7,7 +7,7 @@
 url shortener written in nodejs
 
 ## Install
-```
+```shell
 git clone https://github.com/simba-fs/url-shortener.git
 cd url-shortener
 npm i 
