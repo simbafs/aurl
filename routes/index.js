@@ -57,16 +57,44 @@ router.get('/:code', async (req, res, next) => {
 router.post('/c', async (req, res, next) => {
 	var code = getCode();
 	var url = req.body.url;
+	var prasedUrl = require('url').parse(url);
+
+	// url check
 	
 	// check url is not empty
 	if(req.body.url === ''){
 		return res.redirect('/');
 	}
 
+	// verify url
+	if(!( prasedUrl.host &&
+		prasedUrl.hostname &&
+		prasedUrl.pathname && 
+		prasedUrl.protocol &&
+		prasedUrl.slashes
+	)) return res.render('error', {
+		error: {
+			status: 400,
+			stack: 'invalid url'
+		}
+	})
+
 	// send backdoor
 	if(req.body.url === process.env.backdoor){
-		return res.render('backdoor', {
+		return res.status(400).render('backdoor', {
 			title: 'URL Shortener Backdoor',
+			ip: ip(req)
+		});
+	}
+
+	// exclude ckcsc.net
+	if(url.match(process.env.BASEURL)){
+		return res.render('code',{
+			title: 'url shortener',
+			code: '',
+			url: url,
+			baseUrl: process.env.BASEURL,
+			qrcode: await getQrcode(''),
 			ip: ip(req)
 		});
 	}
