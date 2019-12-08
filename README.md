@@ -26,9 +26,7 @@ backdoor=/backdoor/token
 admin=your admin token
 ```
 
-## CHANGELOG
-2019/12/4
-add clipboard.js
+## [CHANGELOG](./CHANGELOG.md)
 
 ## TODO
 1. brewser addons
