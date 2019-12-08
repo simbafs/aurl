@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const {RecordModule} = require('../schema/record.js');
+const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 require('dotenv').config();
 
 router.get('/', async (req, res, next) => {
@@ -19,7 +20,8 @@ router.get('/', async (req, res, next) => {
 		});
 		res.render('admin', {
 			title: 'URL shortener',
-			records: records
+			records: records,
+			ip: ip(req)
 		});
 	});
 });

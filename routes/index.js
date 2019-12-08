@@ -44,7 +44,8 @@ router.get('/:code', async (req, res, next) => {
 	// check if code is exist
 	const record = await RecordModule.findOne({code: code});
 	if(!record) return res.status(404).render('notFound', {
-		code: code
+		code: code,
+		ip: ip(req)
 	});
 	
 	//redirect to url
