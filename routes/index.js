@@ -30,28 +30,34 @@ const getQrcode = async (code) => {
 	return qrcode;
 }
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-	res.render('index', {
-		title: 'URL Shortener',
-		ip: ip(req)
-	});
+
+router.get('/view', (req, res, next) => {
+	res.redirect('/');		
 });
 
-router.get('/:code', async (req, res, next) => {
+router.get('/view/:code', async (req, res, next) => {
 	const code = req.params.code;
-
-	// check if code is exist
+	
 	const record = await RecordModule.findOne({code: code});
-	if(!record) return res.status(404).render('notFound', {
-		code: code,
+	
+	// check if code found
+	if(!record) return res.render('error', {
+		error: {
+			status: 400,
+			stack: 'code not found'
+		}	
+	})
+
+	res.render('code', {
+		title: 'url shortener',
+		code: record.code,
+		url: record.url,
+		baseUrl: process.env.BASEURL,
+		qrcode: await getQrcode(code),
 		ip: ip(req)
 	});
-	
-	//redirect to url
-	res.redirect(record.url);
-});
 
+});
 
 // create a new record
 router.post('/c', async (req, res, next) => {
@@ -113,6 +119,8 @@ router.post('/c', async (req, res, next) => {
 	// check if url is exist
 	
 	const record = await RecordModule.findOne({url: url});
+	if(record) return res.redirect(`/view/${record.code}`);
+	/*
 	if(record) return res.render('code', {
 		title: 'url shortener',
 		code: record.code,
@@ -121,6 +129,7 @@ router.post('/c', async (req, res, next) => {
 		qrcode: await getQrcode(record.code),
 		ip: ip(req)
 	});
+	*/
 
 	// save record
 	const recode = new RecordModule({
@@ -131,6 +140,8 @@ router.post('/c', async (req, res, next) => {
 
 	await recode.save()
 		.then(async () => {
+			res.redirect(`/view/${code}`);
+			/*
 			res.render('code', {
 				title: 'url shortener',
 				code: code,
@@ -139,10 +150,34 @@ router.post('/c', async (req, res, next) => {
 				qrcode: await getQrcode(code),
 				ip: ip(req)
 			});
+			*/
 		})
 		.catch((e)=>{
 			res.render('error', e);	
 		});
 });
+
+router.get('/:code', async (req, res, next) => {
+	const code = req.params.code;
+
+	// check if code is exist
+	const record = await RecordModule.findOne({code: code});
+	if(!record) return res.status(404).render('notFound', {
+		code: code,
+		ip: ip(req)
+	});
+	
+	//redirect to url
+	res.redirect(record.url);
+});
+
+/* GET home page. */
+router.get('/', (req, res, next) => {
+	res.render('index', {
+		title: 'URL Shortener',
+		ip: ip(req)
+	});
+});
+
 
 module.exports = router;
