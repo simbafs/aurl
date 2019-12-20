@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const auth = require('./auth.js');
 const {RecordModule} = require('../schema/record.js');
 const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 require('dotenv').config();

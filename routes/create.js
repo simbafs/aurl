@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Qrcode = require('qrcode');
 const base58 = require('base-58');
 const crypto = require('crypto');
+const auth = require('./auth.js');
 const {RecordModule} = require('../schema/record.js');
 require('dotenv').config();
 
