@@ -1,16 +1,15 @@
-const jwt = require('jsonwebtoken');
 const crypto = require('crypto');
 require('dotenv').config();
 
 // user pool
 var users = [];
 
-const getCode = (n = 10) => crypto.randomBytes(n).toString('hex');
+const getCode = (n = 64) => crypto.randomBytes(n).toString('hex').substr(0, n);
 
 function token(ip){
 	if(!(/\b(?:\d{1,3}\.){3}\d{1,3}\b/.test(ip))) return false;
 	if(users.some((item) => item.ip === ip)) return users.find((item) => item.ip === ip).token;
-	var token = jwt.sign({token: getCode()}, process.env.SCRETE, { expiresIn: '1h' });
+	var token = getCode();
 	users.push({
 		ip: ip,
 		token: token
@@ -28,5 +27,6 @@ function verify(token){
 
 module.exports = {
 	token: token,
-	verify: verify
+	verify: verify,
+	users: users
 }

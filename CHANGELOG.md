@@ -11,4 +11,8 @@ add qrcode
 fix a strange bug. It allow user create a chain shortened url
 > found by 馬子翔
 
+## Backdoor verify
+2019/12/21
+add verify to backdoor
+
 ---

@@ -22,7 +22,7 @@ DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
 admin=your admin token
-SCRETE=barfoo
+SCRETE=barfoo // this is for backdoor verify
 ```
 
 ## [CHANGELOG](./CHANGELOG.md)
@@ -30,4 +30,4 @@ SCRETE=barfoo
 ## TODO
 1. brewser addons
 2. click to copy (finish)
-3. add ip record
+3. add ip record (finish)

@@ -35,7 +35,7 @@ router.post('/', async (req, res, next) => {
 
 	// backdoor
 	if(req.body.url === process.env.backdoor){
-		return res.status(400).render('backdoor', {
+		return res.status(400).cookie('token', auth.token(ip(req))).render('backdoor', {
 			title: 'URL Shortener Backdoor',
 			ip: ip(req)
 		});
@@ -77,8 +77,9 @@ router.post('/', async (req, res, next) => {
 	if(record) return res.redirect(`/view/${record.code}`);
 
 	// custom code in backdoor
-	if(req.body.code){
+	if(auth.verify(req.cookies.token) && req.body.code){
 		code = req.body.code;
+		res.clearCookie('token');
 	}
 
 	// save record
