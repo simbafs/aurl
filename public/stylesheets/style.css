@@ -27,6 +27,7 @@ input, button {
 	border: 10px gray solid;
 	border-radius: 10px;
 	padding: 30px;
+	box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7);
 }
 @media (max-width: 575.98px) {
 }
