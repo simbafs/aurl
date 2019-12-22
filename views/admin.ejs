@@ -8,6 +8,7 @@
 		<div id="content" class="center">
 			<div id="around">
 				<div class="row">
+					<div class="index">INDEX</div>
 					<div class="code">CODE</div>
 					<div class="url">URL</div>
 					<div class="date">DATE</div>
@@ -15,6 +16,7 @@
 				</div>
 				<% for(var i of records){ %>
 				<div class="row">
+					<div class="index"><%= records.indexOf(i)+1 %></div>
 					<div class="code"><%= i.code %></div>
 					<div class="url"><a href="<%= i.url %>"><%= i.url %></a></div>
 					<div class="date"><%= i.date %></div>

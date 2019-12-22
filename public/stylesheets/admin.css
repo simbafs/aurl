@@ -20,8 +20,8 @@
 	margin: 10px;
 }
 
-.code {
-	width: 10%;
+.index, .code {
+	width: 5%;
 }
 
 .url, .date {
