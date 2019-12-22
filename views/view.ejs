@@ -2,25 +2,7 @@
 <html>
 	<head>
 		<% include include/head.html %>
-		<style>
-button img {
-	height: 15px;
-	width: 15px;
-}
-
-button {
-	background-color: white;
-	border: white;
-	display: inline-block;
-}
-
-.tooltip:hover::before{
-	content: attr(data-tooltip);
-	position: absolute;
-	margin-left: 14px;
-	white-space: pre;
-}
-		</style>
+		<link rel="stylesheet" href="/stylesheets/view.css">
 	</head>
 	<body>
 		<div id="content" nclass="center">
@@ -31,7 +13,6 @@ button {
 				    <img src="/clip.svg" alt="Copy to clipboard">
 			</button>
 			<img src="<%= qrcode %>">
-			<hr>
 			<% include include/footer.html %>
 		</div>
 

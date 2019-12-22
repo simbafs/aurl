@@ -62,7 +62,7 @@ router.post('/', async (req, res, next) => {
 
 	//// exclude ckcsc.net
 	if(url.match(process.env.BASEURL)){
-		return res.render('code',{
+		return res.render('view',{
 			title: 'url shortener',
 			code: '',
 			url: url,

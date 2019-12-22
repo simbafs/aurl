@@ -1,3 +1,13 @@
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
-<small>Please send this page to the admin. Thanks you help</small>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include include/head.html%>
+</head>
+<body>
+	<div id="content" 
+		<h2><%= error.status %></h2>
+		<pre><%= error.stack %></pre>
+		<small>Please send this page to the admin. Thanks you help</small>
+	</div>
+</body>
+</html>

@@ -21,14 +21,12 @@ router.get('/:code', async (req, res, next) => {
 	const record = await RecordModule.findOne({code: code});
 	
 	// check if code found
-	if(!record) return res.render('error', {
-		error: {
-			status: 400,
-			stack: 'code not found'
-		}	
+	if(!record) return res.render('notFound', {
+		code: code,
+		ip: ip(req)
 	})
 
-	res.render('code', {
+	res.render('view', {
 		title: 'url shortener',
 		code: record.code,
 		url: record.url,

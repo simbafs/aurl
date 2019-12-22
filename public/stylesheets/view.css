@@ -1,0 +1,17 @@
+button img {
+	height: 15px;
+	width: 15px;
+}
+
+button {
+	background-color: white;
+	border: white;
+	display: inline-block;
+}
+
+.tooltip:hover::before{
+	content: attr(data-tooltip);
+	position: absolute;
+	margin-left: 14px;
+	white-space: pre;
+}

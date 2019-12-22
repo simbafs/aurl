@@ -2,49 +2,7 @@
 <html>
 	<head>
 		<% include include/head.html %>
-<style>
-#content {
-	height: 60vh;
-	width: 80vw;
-	overflow-y: auto;
-	padding: 5px;
-}
-
-#content, #around{
-	width: 100%;
-	text-align: start;
-}
-
-.row {
-	display: flex;
-	flex-direction: row;
-}
-
-.row div {
-	overflow-x: auto;
-	margin: 10px;
-}
-
-.code {
-	width: 10%;
-}
-
-.url, .date {
-	width: 35%;
-}
-
-.ip {
-	width: 20%
-}
-
-.row {
-	background-color: #ddddff;
-}
-
-.row:nth-child(even) {
-	background-color: #ddffdd;
-}
-</style>
+		<link rel="stylesheet" href="/stylesheets/admin.css">
 	</head>
 	<body>
 		<div id="content" class="center">
