@@ -22,7 +22,6 @@ DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
 admin=your admin token
-SCRETE=barfoo // this is for backdoor verify
 ```
 
 ## [CHANGELOG](./CHANGELOG.md)
