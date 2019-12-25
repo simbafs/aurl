@@ -23,15 +23,21 @@ const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddr
 
 //// verify url
 const isUrl = (url) => {
-	let parsed = require('url').parse(url);
-	return (parsed.protocol && parsed.host);
+	var prasedUrl = require('url').parse(url);
+	if( prasedUrl.host &&
+		prasedUrl.hostname &&
+		prasedUrl.pathname && 
+		prasedUrl.protocol &&
+		prasedUrl.slashes ){
+		return true;
+	}
+	return false;
 };
 
 // create new record
 router.post('/', async (req, res, next) => {
 	var code = getCode();
 	var url = req.body.url;
-	var prasedUrl = require('url').parse(url);
 
 	// backdoor
 	if(req.body.url === process.env.backdoor){
@@ -48,17 +54,14 @@ router.post('/', async (req, res, next) => {
 	}
 
 	//// verify url
-	if(!( prasedUrl.host &&
-		prasedUrl.hostname &&
-		prasedUrl.pathname && 
-		prasedUrl.protocol &&
-		prasedUrl.slashes
-	)) return res.render('error', {
-		error: {
-			status: 400,
-			stack: 'invalid url'
-		}
-	})
+	if(isUrl(req.body.url)){
+		return res.render('error', {
+			error: {
+				status: 400,
+				stack: 'invalid url'
+			}
+		})
+	}
 
 	//// exclude ckcsc.net
 	if(url.match(process.env.BASEURL)){

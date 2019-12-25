@@ -25,6 +25,13 @@ admin=your admin token
 SCRETE=barfoo // this is for backdoor verify
 ```
 
+## API v1
+| method | path    | params |
+| ------ | ------- | ------ |
+| GET    | /code   | code   |
+| GET    | /url    | url    |
+| POST   | /create | url    |
+
 ## [CHANGELOG](./CHANGELOG.md)
 
 ## TODO
