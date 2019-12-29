@@ -54,7 +54,7 @@ router.post('/', async (req, res, next) => {
 	}
 
 	//// verify url
-	if(isUrl(req.body.url)){
+	if(!isUrl(req.body.url)){
 		return res.render('error', {
 			error: {
 				status: 400,
