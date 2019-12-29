@@ -11,8 +11,16 @@ const getQrcode = async (code) => {
 	return qrcode;
 }
 
+router.post('/', (req, res, nect) => {
+	res.redirect(`/view/${req.body.code.replace(/ /g, '')}`);
+});
+
 router.get('/', (req, res, next) => {
-	res.redirect('/');		
+	res.render('view-index', {
+		title: 'url shortener',
+		ip: ip(req)
+	})
+	// res.redirect('/');		
 });
 
 router.get('/:code', async (req, res, next) => {

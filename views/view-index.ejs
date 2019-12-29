@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<% include include/head.html %>
+		<link rel="stylesheet" href="/stylesheets/view.css">
+	</head>
+	<body>
+		<div id="content" nclass="center">
+			<h1><%= title %></h1>
+			<form action="/view" method="post">
+				<input type="text" name="code" placeholder="code" required>
+				<button type="submit">SEND</button>
+			</form>
+			<% include include/footer.html %>
+		</div>
+
+		<% include include/lib.html %>
+	</body>
+</html>
