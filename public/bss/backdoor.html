@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>URL Shortener</title>
+    <meta name="theme-color" content="rgb(143,255,248)">
+    <meta name="twitter:description" content="Url Shortener made by simba-fs
+">
+    <meta name="twitter:image" content="assets/img/icon-1024.png">
+    <meta property="og:type" content="website">
+    <meta name="description" content="A new url shortener,
+made by simba-fs,
+official website https://url.ckcsc.net">
+    <meta property="og:image" content="assets/img/icon-1024.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Url Shortener">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/Copyright.css">
+    <link rel="stylesheet" href="assets/css/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body class="d-flex flex-column justify-content-center align-items-center justify-content-sm-center align-items-sm-center" style="width: 100vw;height: 100vh;">
+    <!-- Start: nav -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
+        <div class="container"><a class="navbar-brand" href="/">&lt;% appName %&gt;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/">index</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="/view">view</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- End: nav -->
+    <div class="container text-center bg-light border rounded shadow-lg" style="padding: 20px;">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">&lt;% title %&gt;</h4>
+                <h6 class="text-muted card-subtitle mb-2">&lt;% subtitle %&gt;</h6>
+                <form action="/c" method="post">
+                    <div class="form-row">
+                        <div class="col-lg-4 offset-lg-4"><input class="form-control" type="text" name="url" placeholder="code" autofocus="" autocomplete="on" inputmode="url" required=""></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col"><i class="fa fa-arrow-down" style="font-size: 36px;"></i></div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-9 offset-lg-1"><input class="form-control" type="text" name="url" placeholder="URL" autofocus="" autocomplete="on" inputmode="url" required=""></div>
+                        <div class="col-lg-1"><button class="btn btn-primary" type="submit">Go!</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- Start: gh-button --><a class="github-button" href="https://github.com/simba-fs" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Follow @simba-fs on GitHub">Follow @simba-fs</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+	
+<a class="github-button" href="https://github.com/simba-fs/url-shortener" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star simba-fs/url-shortener on GitHub">Star</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+        <!-- End: gh-button -->
+        <!-- Start: ip -->
+        <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
+            <p>為了避免資源的浪費，我們會紀錄你的 IP ：&lt;% ip %&gt;</p>
+        </div>
+        <!-- End: ip -->
+    </div>
+    <!-- Start: copyright -->
+    <footer class="text-center" style="background-color: rgba(89,141,184,0);">
+        <h5 style="margin-top: 20px;">CKCSC&nbsp;©&nbsp;2019, made by&nbsp;<a href="https://github.com/simba-fs" target="_blank">simba-fs</a></h5>
+    </footer>
+    <!-- End: copyright -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
+</body>
+
+</html>
