@@ -23,15 +23,16 @@ const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddr
 
 //// verify url
 const isUrl = (url) => {
+	console.log(url);
 	var prasedUrl = require('url').parse(url);
 	if( prasedUrl.host &&
 		prasedUrl.hostname &&
 		prasedUrl.pathname && 
 		prasedUrl.protocol &&
 		prasedUrl.slashes ){
-		return true;
+		return false;
 	}
-	return false;
+	return true;
 };
 
 // create new record
@@ -56,13 +57,14 @@ router.post('/', async (req, res, next) => {
 	}
 
 	//// verify url
-	if(!isUrl(req.body.url)){
+	console.log('isUrl', isUrl(req.body.url[1]));
+	if(!isUrl(req.body.url[1])){
 		return res.render('error', {
 			error: {
-				appName: process.env.appName,
 				status: 400,
 				stack: 'invalid url'
-			}
+			},
+			appName: process.env.appName
 		})
 	}
 
@@ -86,7 +88,7 @@ router.post('/', async (req, res, next) => {
 
 	// custom code in backdoor
 	if(auth.verify(req.cookies.token) && req.body.code){
-		code = req.body.code;
+		code = req.body.code[0];
 		res.clearCookie('token');
 	}
 

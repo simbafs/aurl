@@ -53,8 +53,8 @@ official website https://url.ckcsc.net">
                 <h4 class="card-title"><%= title %></h4>
                 <h6 class="text-muted card-subtitle mb-2"><%= subtitle %></h6><a class="card-link" href="<%= url %>" target="_blank"><%= url %></a>
                 <div class="row">
-                    <div class="col-12 col-sm-8 col-md-5 col-lg-4 offset-0 offset-sm-2 offset-md-3 offset-lg-4"><a href="<%= baseUrl + '/' + code %>" target="_blank"><%= baseUrl + '/' + code %></a></div>
-                    <div class="col-sm-1"><i class="far fa-clipboard" data-toggle="tooltip" data-bs-tooltip="" data-placement="right" style="font-size: 20px;" title="copy"></i></div>
+                    <div class="col-12 col-sm-8 col-md-5 col-lg-4 offset-0 offset-sm-2 offset-md-3 offset-lg-4"><a id="code" href="<%= baseUrl + '/' + code %>" target="_blank"><%= baseUrl + '/' + code %></a></div>
+                    <div class="col-sm-1"><button class="btn btn-primary copy" type="button" data-clipboard-target="#code"><i class="far fa-clipboard" data-toggle="tooltip" data-bs-tooltip="" data-placement="right" style="font-size: 20px;" title="copy"></i></button></div>
                 </div><img class="rounded shadow" src="<%= qrcode %>" width="150" height="150" style="margin-bottom: 20px;">
                 <div class="row">
                     <div class="col"><a class="btn btn-light shadow" role="button" href="/">HOME</a></div>
@@ -82,6 +82,8 @@ official website https://url.ckcsc.net">
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/js/bs-init.js"></script>
+    <script src="/assets/js/clipboard.min.js"></script>
+    <script src="/assets/js/cpoy.js"></script>
     <script src="/assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
 </body>
 
