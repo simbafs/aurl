@@ -17,7 +17,9 @@ router.post('/', (req, res, nect) => {
 
 router.get('/', (req, res, next) => {
 	res.render('view-index', {
-		title: 'url shortener',
+		appName: process.env.appName,
+		title: process.env.title,
+		subtitle: process.env.subtitle,
 		ip: ip(req)
 	})
 	// res.redirect('/');		
@@ -30,12 +32,17 @@ router.get('/:code', async (req, res, next) => {
 	
 	// check if code found
 	if(!record) return res.render('notFound', {
+		appName: process.env.appName,
+		title: process.env.title,
+		subtitle: process.env.subtitle,
 		code: code,
 		ip: ip(req)
 	})
 
 	res.render('view', {
-		title: 'url shortener',
+		appName: process.env.appName,
+		title: process.env.title,
+		subtitle: process.env.subtitle,
 		code: record.code,
 		url: record.url,
 		baseUrl: process.env.BASEURL,

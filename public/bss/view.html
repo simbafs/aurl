@@ -36,7 +36,7 @@ official website https://url.ckcsc.net">
 <body class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;padding-top: 90px;">
     <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
-        <div class="container"><a class="navbar-brand" href="/">&lt;% appName %&gt;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="/">&lt;%= appName %&gt;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav">
@@ -50,12 +50,12 @@ official website https://url.ckcsc.net">
     <div class="container bg-light border rounded shadow-lg" style="padding: 20px;">
         <div class="card d-flex flex-column">
             <div class="card-body text-center flex-column align-items-lg-center">
-                <h4 class="card-title">&lt;% title %&gt;</h4>
-                <h6 class="text-muted card-subtitle mb-2">&lt;% subtitle %&gt;</h6><a class="card-link" href="&lt;% url %&gt;" target="_blank">&lt;% url %&gt;</a>
+                <h4 class="card-title">&lt;%= title %&gt;</h4>
+                <h6 class="text-muted card-subtitle mb-2">&lt;%= subtitle %&gt;</h6><a class="card-link" href="&lt;%= url %&gt;" target="_blank">&lt;%= url %&gt;</a>
                 <div class="row">
-                    <div class="col-12 col-sm-8 col-lg-4 offset-0 offset-sm-2 offset-md-1 offset-lg-4"><a href="baseurl + '/' + code" target="_blank">&lt;% baseurl + '/' + code %&gt;</a></div>
+                    <div class="col-12 col-sm-8 col-md-5 col-lg-4 offset-0 offset-sm-2 offset-md-3 offset-lg-4"><a href="&lt;%= baseUrl + '/' + code %&gt;" target="_blank">&lt;%= baseUrl + '/' + code %&gt;</a></div>
                     <div class="col-sm-1"><i class="far fa-clipboard" data-toggle="tooltip" data-bs-tooltip="" data-placement="right" style="font-size: 20px;" title="copy"></i></div>
-                </div><img class="rounded shadow" src="&lt;% qrcode %&gt;" width="150" height="150" style="margin-bottom: 20px;">
+                </div><img class="rounded shadow" src="&lt;%= qrcode %&gt;" width="150" height="150" style="margin-bottom: 20px;">
                 <div class="row">
                     <div class="col"><a class="btn btn-light shadow" role="button" href="/">HOME</a></div>
                 </div>
@@ -70,7 +70,7 @@ official website https://url.ckcsc.net">
         <!-- End: gh-button -->
         <!-- Start: ip -->
         <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
-            <p>為了避免資源的浪費，我們會紀錄你的 IP ：&lt;% ip %&gt;</p>
+            <p>為了避免資源的浪費，我們會紀錄你的 IP ：&lt;%= ip %&gt;</p>
         </div>
         <!-- End: ip -->
     </div>

@@ -36,7 +36,7 @@ official website https://url.ckcsc.net">
 <body class="d-sm-flex d-md-flex flex-column justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center" style="height: 100vh;">
     <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
-        <div class="container"><a class="navbar-brand" href="/">&lt;% appName %&gt;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="/">&lt;%= appName %&gt;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav">
@@ -50,12 +50,12 @@ official website https://url.ckcsc.net">
     <div class="container text-center bg-light border rounded shadow-lg" style="padding: 20px;">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">&lt;% title %&gt;</h4>
-                <h6 class="text-muted card-subtitle mb-2">&lt;% subtitle %&gt;</h6>
+                <h4 class="card-title">&lt;%= title %&gt;</h4>
+                <h6 class="text-muted card-subtitle mb-2">&lt;%= subtitle %&gt;</h6>
                 <form method="post" action="/post">
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">Code</span></div><input class="form-control" type="text" placeholder="code" name="code" required="">
-                        <div class="input-group-append"><button class="btn btn-primary" type="button">Go!</button></div>
+                        <div class="input-group-append"><button class="btn btn-primary" type="submit">Go!</button></div>
                     </div>
                 </form>
                 <!-- Start: gh-button -->
@@ -67,7 +67,7 @@ official website https://url.ckcsc.net">
                 <!-- End: gh-button -->
                 <!-- Start: ip -->
                 <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
-                    <p>為了避免資源的浪費，我們會紀錄你的 IP ：&lt;% ip %&gt;</p>
+                    <p>為了避免資源的浪費，我們會紀錄你的 IP ：&lt;%= ip %&gt;</p>
                 </div>
                 <!-- End: ip -->
             </div>

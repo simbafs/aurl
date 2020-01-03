@@ -46,6 +46,9 @@ router.get('/:code', async (req, res, next) => {
 	// check if code is exist
 	const record = await RecordModule.findOne({code: code});
 	if(!record) return res.status(404).render('notFound', {
+		appName: process.env.appName,
+		title: process.env.title,
+		subtitle: process.env.subtitle,
 		code: code,
 		ip: ip(req)
 	});
@@ -57,7 +60,9 @@ router.get('/:code', async (req, res, next) => {
 /* GET home page. */
 router.get('/', (req, res, next) => {
 	res.render('index', {
-		title: 'URL Shortener',
+		title: process.env.title,
+		subtitle: process.env.subtitle,
+		appName: process.env.appName,
 		ip: ip(req)
 	});
 });

@@ -20,7 +20,9 @@ router.get('/', async (req, res, next) => {
 			});
 		});
 		res.render('admin', {
-			title: 'URL shortener',
+			appName: process.env.appName,
+			title: process.env.title,
+			subtitle: process.env.subtitle,
 			records: records,
 			ip: ip(req)
 		});

@@ -42,7 +42,9 @@ router.post('/', async (req, res, next) => {
 	// backdoor
 	if(req.body.url === process.env.backdoor){
 		return res.status(400).cookie('token', auth.token(ip(req))).render('backdoor', {
-			title: 'URL Shortener Backdoor',
+			appName: process.env.appName,
+			title: process.env.title,
+			subtitle: process.env.subtitle,
 			ip: ip(req)
 		});
 	}
@@ -57,6 +59,7 @@ router.post('/', async (req, res, next) => {
 	if(!isUrl(req.body.url)){
 		return res.render('error', {
 			error: {
+				appName: process.env.appName,
 				status: 400,
 				stack: 'invalid url'
 			}
@@ -66,7 +69,9 @@ router.post('/', async (req, res, next) => {
 	//// exclude ckcsc.net
 	if(url.match(process.env.BASEURL)){
 		return res.render('view',{
-			title: 'url shortener',
+			appName: process.env.appName,
+			title: process.env.title,
+			subtitle: process.env.subtitle,
 			code: '',
 			url: url,
 			baseUrl: process.env.BASEURL,
@@ -94,7 +99,12 @@ router.post('/', async (req, res, next) => {
 
 	await recode.save()
 		.then(async () => res.redirect(`/view/${code}`))
-		.catch((e) => res.render('error', e));
+		.catch((e) => res.render('error', {
+			appName: process.env.appName,
+			title: process.env.title,
+			subtitle: process.env.subtitle,
+			...e
+		}));
 });
 
 module.exports = router;

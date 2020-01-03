@@ -33,36 +33,10 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 
-<body class="d-flex d-sm-flex d-xl-flex flex-column justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-xl-center align-items-xl-center" style="height: 100vh;">
-    <!-- Start: nav -->
-    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
-        <div class="container"><a class="navbar-brand" href="/">&lt;%= appName %&gt;</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse"
-                id="navcol-1">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/">index</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" href="/view">view</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!-- End: nav -->
-    <div class="container bg-light border rounded shadow-lg" style="padding: 20px;">
-        <div class="row">
-            <div class="col">
-                <h1>&lt;%= error.status %&gt;</h1>
-            </div>
-        </div>
-        <div class="row" style="padding-left: 20px;"><pre><%= error.stack %></pre></div>
-        <div class="row">
-            <div class="col"><small>如果你看到這個頁面，請截圖寄到這個信箱&nbsp;<a href="mailto:ckcsc.net@gmail.com" target="_blank">ckcsc.net@gmail.com</a></small></div>
-        </div>
+<body>
+    <div class="container d-lg-flex flex-column justify-content-lg-center align-items-lg-center" style="height: 100vh;">
+        <main class="text-center bg-light border rounded shadow-lg" style="padding: 20px;"></main>
     </div>
-    <!-- Start: copyright -->
-    <footer class="text-center" style="background-color: rgba(89,141,184,0);">
-        <h5 style="margin-top: 20px;">CKCSC&nbsp;©&nbsp;2019, made by&nbsp;<a href="https://github.com/simba-fs" target="_blank">simba-fs</a></h5>
-    </footer>
-    <!-- End: copyright -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/bs-init.js"></script>
