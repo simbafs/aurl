@@ -27,4 +27,9 @@ finish API
 
 Marry Xmas ! 
 
+## Rebuild frontend
+2020/01/03
+Rebuild a frontend with bootstrap studio
+It's so difficult Kew~~ kew~~
+
 ---
