@@ -25,3 +25,7 @@
   box-sizing: border-box;
 }
 
+#data {
+  overflow-x: auto;
+}
+
