@@ -25,7 +25,13 @@
   box-sizing: border-box;
 }
 
-#data {
-  overflow-x: auto;
+.overflow-wrap {
+  overflow-wrap: break-word;
+  overflow-y: hidden;
+}
+
+.overflow-y {
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 

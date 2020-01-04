@@ -49,6 +49,7 @@ router.get('/:code', async (req, res, next) => {
 		appName: process.env.appName,
 		title: process.env.title,
 		subtitle: process.env.subtitle,
+		baseUrl: process.env.BASEURL,
 		code: code,
 		ip: ip(req)
 	});

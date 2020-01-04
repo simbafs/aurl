@@ -33,7 +33,7 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
-<body class="d-md-flex flex-column justify-content-md-center align-items-md-center" style="padding-top: 200px;height: 100vh;">
+<body class="d-md-flex flex-column justify-content-md-center align-items-md-center" style="height: 100vh;padding-top: 100px;">
     <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -47,37 +47,37 @@ official website https://url.ckcsc.net">
         </div>
     </nav>
     <!-- End: nav -->
-    <div class="container bg-light shadow-lg" style="padding: 20px;">
+    <div class="container bg-light shadow-lg" style="padding: 20px;height: 65vh;">
         <div class="row">
-            <div class="col-md-1">
+            <div class="col-md-1 overflow-wrap">
                 <p>Index</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 overflow-wrap">
                 <p>Code</p>
             </div>
-            <div class="col">
+            <div class="col overflow-wrap">
                 <p>Url</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 overflow-wrap">
                 <p>Date</p>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 overflow-wrap">
                 <p>IP</p>
             </div>
         </div>
-        <div id="data"><% for(var i of records){ %>
+        <div class="overflow-y" style="height: 90%;"><% for(var i of records){ %>
             <div class="row">
-                <div class="col-md-1">
+                <div class="col-md-1 overflow-wrap">
                     <p><%= records.indexOf(i)+1 %></p>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 overflow-wrap" style="height: 90%;">
                     <p><%= i.code %></p>
                 </div>
-                <div class="col"><a href="<%= i.url %>" target="_blank"><span style="text-decoration: underline;"><%= i.url %></span></a></div>
-                <div class="col-md-2">
+                <div class="col overflow-wrap"><a href="<%= i.url %>" target="_blank"><span style="text-decoration: underline;"><%= i.url %></span></a></div>
+                <div class="col-md-2 overflow-wrap">
                     <p><%= i.date %></p>
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-2 overflow-wrap">
                     <p><%= i.ip %></p>
                 </div>
             </div><% } %></div>
