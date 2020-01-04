@@ -23,7 +23,6 @@ const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddr
 
 //// verify url
 const isUrl = (url) => {
-	console.log(url);
 	var prasedUrl = require('url').parse(url);
 	if( prasedUrl.host &&
 		prasedUrl.hostname &&
@@ -57,7 +56,6 @@ router.post('/', async (req, res, next) => {
 	}
 
 	//// verify url
-	console.log('isUrl', isUrl(req.body.url[1]));
 	if(!isUrl(req.body.url[1])){
 		return res.render('error', {
 			error: {

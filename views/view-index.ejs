@@ -33,7 +33,7 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 
-<body class="d-sm-flex d-md-flex flex-column justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center" style="height: 100vh;">
+<body class="d-sm-flex d-md-flex flex-column justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center" style="height: 100vh;margin-top: 100px;">
     <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -58,23 +58,22 @@ official website https://url.ckcsc.net">
                         <div class="input-group-append"><button class="btn btn-primary" type="submit">Go!</button></div>
                     </div>
                 </form>
-                <!-- Start: gh-button -->
-                <div class="d-flex flex-row justify-content-sm-center align-items-sm-center" style="margin-top: 20px;"><a class="github-button" href="https://github.com/simba-fs" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Follow @simba-fs on GitHub">Follow @simba-fs</a>
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-	
-<a class="github-button" href="https://github.com/simba-fs/url-shortener" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star simba-fs/url-shortener on GitHub">Star</a>
-<script async defer src="https://buttons.github.io/buttons.js"></script></div>
-                <!-- End: gh-button -->
-                <!-- Start: ip -->
-                <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
-                    <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
-                </div>
-                <!-- End: ip -->
             </div>
         </div>
     </div>
     <!-- Start: copyright -->
     <footer class="text-center" style="background-color: rgba(89,141,184,0);">
+        <!-- Start: gh-button -->
+        <div class="text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="margin-top: 20px;"><a class="github-button" href="https://github.com/simba-fs" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Follow @simba-fs on GitHub">Follow @simba-fs</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+            <div style="width: 10px;"></div><a class="github-button" href="https://github.com/simba-fs/url-shortener" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star simba-fs/url-shortener on GitHub">Star</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script></div>
+        <!-- End: gh-button -->
+        <!-- Start: ip -->
+        <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
+            <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
+        </div>
+        <!-- End: ip -->
         <h5 style="margin-top: 20px;">CKCSC&nbsp;©&nbsp;2019, made by&nbsp;<a href="https://github.com/simba-fs" target="_blank">simba-fs</a></h5>
     </footer>
     <!-- End: copyright -->
