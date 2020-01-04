@@ -18,6 +18,9 @@ app.set('view engine', 'ejs');
 // load env
 require('dotenv').config();
 
+// functions
+const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
+
 // favicon setup
 
 app.use(logger('dev'));
@@ -48,7 +51,8 @@ app.use(function(err, req, res, next) {
 		...err,
 		appName: process.env.appName,
 		title: process.env.title,
-		subtitle: process.env.subtitle
+		subtitle: process.env.subtitle,
+		ip: ip(req)
 	});
 });
 
