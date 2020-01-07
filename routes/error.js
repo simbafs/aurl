@@ -1,9 +1,8 @@
 const router = require('express').Router();
 
 router.get('/', (req, res, next) => {
-	res.render('error', {
+	res.cRender('error', {
 		error: {
-			appName: process.env.appName,
 			status: 400,
 			stack: 'something'
 		}

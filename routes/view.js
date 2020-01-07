@@ -1,28 +1,13 @@
 const router = require('express').Router();
-const {RecordModule} = require('../schema/record.js');
+const {RecordModule, ip, getQrcode} = require('./misc.js');
 require('dotenv').config();
-
-const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
-const getQrcode = async (code) => {
-	const Qrcode = require('qrcode');
-	var qrcode;
-	await Qrcode.toDataURL(`${process.env.BASEURL}/${code}`)
-		.then((url) => qrcode = url);
-	return qrcode;
-}
 
 router.post('/', (req, res, nect) => {
 	res.redirect(`/view/${req.body.code.replace(/ /g, '')}`);
 });
 
 router.get('/', (req, res, next) => {
-	res.render('view-index', {
-		appName: process.env.appName,
-		title: process.env.title,
-		subtitle: process.env.subtitle,
-		ip: ip(req)
-	})
-	// res.redirect('/');		
+	res.cRender('view-index');
 });
 
 router.get('/:code', async (req, res, next) => {
@@ -31,23 +16,16 @@ router.get('/:code', async (req, res, next) => {
 	const record = await RecordModule.findOne({code: code});
 	
 	// check if code found
-	if(!record) return res.render('notFound', {
-		appName: process.env.appName,
-		title: process.env.title,
-		subtitle: process.env.subtitle,
+	if(!record) return res.cRender('notFound', {
 		code: code,
-		ip: ip(req)
+		baseUrl: process.env.BASEURL
 	})
 
-	res.render('view', {
-		appName: process.env.appName,
-		title: process.env.title,
-		subtitle: process.env.subtitle,
+	res.cRender('view', {
 		code: record.code,
 		url: record.url,
 		baseUrl: process.env.BASEURL,
-		qrcode: await getQrcode(code),
-		ip: ip(req)
+		qrcode: await getQrcode(code)
 	});
 });
 

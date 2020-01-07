@@ -1,30 +1,25 @@
 const router = require('express').Router();
-const auth = require('./auth.js');
-const {RecordModule} = require('../schema/record.js');
-const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
+const moment = require('moment-timezone');
+const {auth, RecordModule, ip} = require('./misc.js');
 require('dotenv').config();
+
 
 router.get('/', async (req, res, next) => {
 	// check if cookie is admin
 	if(req.cookies.admin !== process.env.admin) return next();
 
-	// console.log('ip', req.headers['x-forwarded-for'] || req.connection.remoteAddress);
 	await RecordModule.find({}, (err, data) => {
 		var records = [];
 		data.forEach((item)=>{
 			records.push({
 				code: item.code,
 				url: item.url,
-				date: item.date,
+				date: moment(item.time).locale('zh-tw').tz('Asia/Taipei').format('LLLL'),
 				ip: item.ip || 'none'
 			});
 		});
-		res.render('admin', {
-			appName: process.env.appName,
-			title: process.env.title,
-			subtitle: process.env.subtitle,
-			records: records,
-			ip: ip(req)
+		res.cRender('admin', {
+			records: records
 		});
 	});
 });

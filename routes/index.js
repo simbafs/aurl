@@ -1,10 +1,6 @@
 const router = require('express').Router();
-const crypto = require('crypto');
-const base58 = require('base-58');
-const {RecordModule} = require('../schema/record.js');
+const {ip} = require('./misc.js');
 const mongoose = require('mongoose');
-const Qrcode = require('qrcode');
-const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 
 // router
 const viewRouter = require('./view.js');
@@ -19,21 +15,6 @@ mongoose.connect(process.env.DB, {
 	useUnifiedTopology: true
 	}, () => {console.log('DB connected')});
 
-// functions
-const isUrl = (url) => {
-	let parsed = require('url').parse(url);
-	return (parsed.protocol && parsed.host);
-};
-
-const getCode = () => base58.encode(crypto.randomBytes(4));
-
-const getQrcode = async (code) => {
-	var qrcode;
-	await Qrcode.toDataURL(`${process.env.BASEURL}/${code}`)
-		.then((url) => qrcode = url);
-	return qrcode;
-}
-
 // view
 router.use('/view', viewRouter);
 
@@ -45,13 +26,9 @@ router.get('/:code', async (req, res, next) => {
 
 	// check if code is exist
 	const record = await RecordModule.findOne({code: code});
-	if(!record) return res.status(404).render('notFound', {
-		appName: process.env.appName,
-		title: process.env.title,
-		subtitle: process.env.subtitle,
+	if(!record) return res.status(404).cRender('notFound', {
 		baseUrl: process.env.BASEURL,
-		code: code,
-		ip: ip(req)
+		code: code
 	});
 	
 	//redirect to url
@@ -60,12 +37,7 @@ router.get('/:code', async (req, res, next) => {
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-	res.render('index', {
-		title: process.env.title,
-		subtitle: process.env.subtitle,
-		appName: process.env.appName,
-		ip: ip(req)
-	});
+	res.cRender('index');
 });
 
 

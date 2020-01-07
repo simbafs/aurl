@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const {cRender} = require('./routes/misc.js');
 
 const indexRouter = require('./routes/index.js');
 const apiRouter = require('./routes/api.js');
@@ -23,11 +24,15 @@ const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddr
 
 // favicon setup
 
+// app.use(logger('dev', {
+//	skip: function (req, res) { return res.statusCode <  }
+// }));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cRender);
 
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
@@ -47,13 +52,7 @@ app.use(function(err, req, res, next) {
 
 	// render the error page
 	res.status(err.status || 500);
-	res.render('error', {
-		...err,
-		appName: process.env.appName,
-		title: process.env.title,
-		subtitle: process.env.subtitle,
-		ip: ip(req)
-	});
+	res.cRender('error', err);
 });
 
 module.exports = app;
