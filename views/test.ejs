@@ -8,32 +8,32 @@
     <meta name="theme-color" content="rgb(143,255,248)">
     <meta name="twitter:description" content="Url Shortener made by simba-fs
 ">
-    <meta name="twitter:image" content="/assets/img/icon-1024.png">
+    <meta name="twitter:image" content="//assets/img/icon-1024.png">
     <meta property="og:type" content="website">
     <meta name="description" content="A new url shortener,
 made by simba-fs,
 official website https://url.ckcsc.net">
-    <meta property="og:image" content="/assets/img/icon-1024.png">
+    <meta property="og:image" content="//assets/img/icon-1024.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Url Shortener">
-    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="//assets/img/icon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="//assets/img/icon-192.png">
+    <link rel="stylesheet" href="//assets/bootstrap/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
-    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="/assets/css/Copyright.css">
-    <link rel="stylesheet" href="/assets/css/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="//assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="//assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="//assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="//assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="//assets/css/Copyright.css">
+    <link rel="stylesheet" href="//assets/css/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.css">
+    <link rel="stylesheet" href="//assets/css/Navigation-with-Button.css">
+    <link rel="stylesheet" href="//assets/css/Navigation-with-Search.css">
+    <link rel="stylesheet" href="//assets/css/styles.css">
 </head>
 
-<body class="d-flex d-lg-flex flex-column justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100vh;">
+<body class="d-flex flex-column justify-content-center align-items-center justify-content-sm-center align-items-sm-center" style="width: 100vw;height: 100vh;">
     <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -47,12 +47,17 @@ official website https://url.ckcsc.net">
         </div>
     </nav>
     <!-- End: nav -->
-    <div class="container text-center bg-light border rounded shadow-lg" style="padding: 20px;">
-        <div class="card">
+    <div class="container text-center" style="padding: 20px;">
+        <div class="card" style="background-color: rgba(0,0,0,0.1);">
             <div class="card-body">
                 <h4 class="card-title"><%= title %></h4>
                 <h6 class="text-muted card-subtitle mb-2"><%= subtitle %></h6>
-                <p class="card-text">找不到短網址 <%= baseUrl + '/' + code %>，可能是你少打幾個字</p>
+                <form action="/c" method="post">
+                    <div class="input-group">
+                        <div class="input-group-prepend"><span class="input-group-text">URL</span></div><input class="form-control" type="text" name="url" placeholder="URL" autofocus="" autocomplete="on" inputmode="url" required="">
+                        <div class="input-group-append"><button class="btn btn-primary" type="submit">Go!</button></div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -68,14 +73,14 @@ official website https://url.ckcsc.net">
         <h5 style="margin-top: 20px;">CKCSC © 2019, made by <a href="https://github.com/simba-fs" target="_blank">simba-fs</a></h5>
     </footer>
     <!-- End: footer -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/bs-init.js"></script>
-    <script src="/assets/js/clipboard.min.js"></script>
-    <script src="/assets/js/cpoy.js"></script>
+    <script src="//assets/js/jquery.min.js"></script>
+    <script src="//assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="//assets/js/bs-init.js"></script>
+    <script src="//assets/js/clipboard.min.js"></script>
+    <script src="//assets/js/cpoy.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.4/lib/darkmode-js.min.js"></script>
-    <script src="/assets/js/darkmode.js"></script>
-    <script src="/assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
+    <script src="//assets/js/darkmode.js"></script>
+    <script src="//assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
 </body>
 
 </html>

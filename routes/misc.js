@@ -34,6 +34,7 @@ const isUrl = (url) => {
 
 //// cRender custom render
 function cRender(req, res, next){
+	console.log('cRender loaded');
 	res.cRender = function(view, ...data){
 		data = data[0];
 		data = {
@@ -45,7 +46,6 @@ function cRender(req, res, next){
 		}
 		res.render(view, data);
 	}
-	next();
 }
 
 module.exports = {
