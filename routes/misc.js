@@ -46,6 +46,7 @@ function cRender(req, res, next){
 		}
 		res.render(view, data);
 	}
+	next();
 }
 
 module.exports = {

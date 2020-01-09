@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {ip} = require('./misc.js');
+const {ip, RecordModule} = require('./misc.js');
 const mongoose = require('mongoose');
 
 // router

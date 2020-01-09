@@ -42,12 +42,35 @@ official website https://url.ckcsc.net">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/view">View</a></li>
-                </ul>
-            </div>
+                </ul><script>
+    const darkSwitch=document.getElementById("darkSwitch");function initTheme(){const e=null!==localStorage.getItem("darkSwitch")&&"dark"===localStorage.getItem("darkSwitch");darkSwitch.checked=e,e?document.body.setAttribute("data-theme","dark"):document.body.removeAttribute("data-theme")}function resetTheme(){darkSwitch.checked?(document.body.setAttribute("data-theme","dark"),localStorage.setItem("darkSwitch","dark")):(document.body.removeAttribute("data-theme"),localStorage.removeItem("darkSwitch"))}window.addEventListener("load",()=>{darkSwitch&&(initTheme(),darkSwitch.addEventListener("change",()=>{resetTheme()}))});
+</script>
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="darkSwitch">
+  <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+</div>
+<style>
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #eee !important;
+}    
+</style></div>
         </div>
     </nav>
     <!-- End: nav -->
-    <div class="container text-center" style="padding: 20px;">
+    <div class="container text-center bg-light border rounded shadow-lg" style="padding: 20px;">
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title"><%= title %></h4>
@@ -78,9 +101,8 @@ official website https://url.ckcsc.net">
     <script src="/assets/js/bs-init.js"></script>
     <script src="/assets/js/clipboard.min.js"></script>
     <script src="/assets/js/cpoy.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.4/lib/darkmode-js.min.js"></script>
-    <script src="/assets/js/darkmode.js"></script>
     <script src="/assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
+    <script src="/assets/js/darkmode.js"></script>
 </body>
 
 </html>
