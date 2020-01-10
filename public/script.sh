@@ -8,3 +8,6 @@ sed -i 's/&nbsp;/ /g' *.ejs
 sed -i 's/assets/\/assets/g' *.ejs
 rm -rf ../views/*
 mv -f *.ejs ../views/
+
+# debug
+# mv ../views/index-1.ejs test.html

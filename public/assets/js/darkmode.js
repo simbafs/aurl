@@ -1,12 +1,1 @@
-var options = {
-  mixColor: '#fff', // default: '#fff'
-  backgroundColor: '#fff',  // default: '#fff'
-  buttonColorDark: '#100f2c',  // default: '#100f2c'
-  buttonColorLight: '#fff', // default: '#fff'
-  saveInCookies: true, // default: true,
-  label: '🌓', // default: ''
-  autoMatchOsTheme: true // default: true
-}
-
-const darkmode = new Darkmode(options);
-darkmode.showWidget();
+console.log(darkSwitch_1);var darkSwitch_1=document.getElementById("darkSwitch_1");console.log(darkSwitch_1);function initTheme(){const e=null!==localStorage.getItem("darkSwitch_1")&&"dark"===localStorage.getItem("darkSwitch_1");darkSwitch_1.checked=e,e?document.body.setAttribute("data-theme","dark"):document.body.removeAttribute("data-theme")}function resetTheme(){darkSwitch_1.checked?(document.body.setAttribute("data-theme","dark"),localStorage.setItem("darkSwitch_1","dark")):(document.body.removeAttribute("data-theme"),localStorage.removeItem("darkSwitch_1"))}window.addEventListener("load",()=>{darkSwitch_1&&(initTheme(),darkSwitch_1.addEventListener("change",()=>{resetTheme()}))});
