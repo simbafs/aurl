@@ -42,36 +42,13 @@ official website https://url.ckcsc.net">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/">Home</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" href="/view">View</a></li>
-                </ul><script>
-    const darkSwitch=document.getElementById("darkSwitch");function initTheme(){const e=null!==localStorage.getItem("darkSwitch")&&"dark"===localStorage.getItem("darkSwitch");darkSwitch.checked=e,e?document.body.setAttribute("data-theme","dark"):document.body.removeAttribute("data-theme")}function resetTheme(){darkSwitch.checked?(document.body.setAttribute("data-theme","dark"),localStorage.setItem("darkSwitch","dark")):(document.body.removeAttribute("data-theme"),localStorage.removeItem("darkSwitch"))}window.addEventListener("load",()=>{darkSwitch&&(initTheme(),darkSwitch.addEventListener("change",()=>{resetTheme()}))});
-</script>
-<div class="custom-control custom-switch">
-  <input type="checkbox" class="custom-control-input" id="darkSwitch">
-  <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
-</div>
-<style>
-[data-theme="dark"] {
-  background-color: #111 !important;
-  color: #eee;
-}
-
-[data-theme="dark"] .bg-light {
-  background-color: #333 !important;
-}
-
-[data-theme="dark"] .bg-white {
-  background-color: #000 !important;
-}
-
-[data-theme="dark"] .bg-black {
-  background-color: #eee !important;
-}    
-</style></div>
+                </ul>
+            </div>
         </div>
     </nav>
     <!-- End: nav -->
-    <div class="container text-center bg-light border rounded shadow-lg" style="padding: 20px;">
-        <div class="card">
+    <div class="container text-center" style="padding: 20px;">
+        <div class="card" style="background-color: rgba(0,0,0,0.1);">
             <div class="card-body">
                 <h4 class="card-title"><%= title %></h4>
                 <h6 class="text-muted card-subtitle mb-2"><%= subtitle %></h6>
@@ -93,8 +70,31 @@ official website https://url.ckcsc.net">
 <script async defer src="https://buttons.github.io/buttons.js"></script>
             <div style="width: 10px;"></div><a class="github-button" href="https://github.com/simba-fs/url-shortener" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star simba-fs/url-shortener on GitHub">Star</a>
 <script async defer src="https://buttons.github.io/buttons.js"></script></div>
-        <h5 style="margin-top: 20px;">CKCSC © 2019, made by <a href="https://github.com/simba-fs" target="_blank">simba-fs</a></h5>
-    </footer>
+        <h5 style="margin-top: 20px;">CKCSC © 2019, made by <a href="https://github.com/simba-fs" target="_blank">simba-fs</a></h5><script>
+
+</script>
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="darkSwitch_1">
+  <label class="custom-control-label" for="darkSwitch_1">Dark Mode</label>
+</div>
+<style>
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #eee !important;
+}    
+</style></footer>
     <!-- End: footer -->
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
