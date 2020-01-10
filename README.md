@@ -40,6 +40,6 @@ admin=your admin token
 
 ---
 
-感謝 [CSY教主](https://github.com/CSY54)、(海豹)[https://www.facebook.com/seadog007] 幫助解決 nosql injection
+感謝 [CSY教主](https://github.com/CSY54)、[海豹](https://www.facebook.com/seadog007) 幫助解決 nosql injection
 \CSY教我/
 \CSY教主萬歲/
