@@ -1,4 +1,4 @@
-const ip = (req) => req.ip.replace('::ffff:', '');
+const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 const auth = require('./auth.js');
 const {RecordModule} = require('../schema/record.js');
 const Qrcode = require('qrcode');
