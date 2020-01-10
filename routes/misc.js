@@ -19,7 +19,7 @@ const getCode = () => base58.encode(crypto.randomBytes(4));
 
 //// verify url
 const isUrl = (url) => {
-	var prasedUrl = require('url').parse(url);
+	var prasedUrl = require('url').parse(url.toString());
 	// console.log(url);
 	// console.log(prasedUrl);
 	if( prasedUrl.host &&
