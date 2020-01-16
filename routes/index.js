@@ -13,7 +13,10 @@ require('dotenv').config();
 mongoose.connect(process.env.DB, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
-	}, () => {console.log('DB connected')});
+	}, (err, db) => {
+		if(err) return console.error(err);
+		console.log(db);
+	});
 
 // view
 router.use('/view', viewRouter);

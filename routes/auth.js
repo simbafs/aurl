@@ -1,10 +1,9 @@
 const crypto = require('crypto');
+const {getCode} = require('./misc.js');
 require('dotenv').config();
 
 // user pool
 var users = [];
-
-const getCode = (n = 64) => crypto.randomBytes(n).toString('hex').substr(0, n);
 
 function token(ip){
 	if(!(/\b(?:\d{1,3}\.){3}\d{1,3}\b/.test(ip))) return false;

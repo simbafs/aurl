@@ -21,7 +21,11 @@ please conplete the following
 DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
-admin=your admin token
+admin="your admin token"
+
+appName="Your app name"
+title="title"
+subtitle="subtitle"
 ```
 
 ## API v1
@@ -37,6 +41,7 @@ admin=your admin token
 1. brewser addons
 2. click to copy (finish)
 3. add ip record (finish)
+4. improve log
 
 ---
 
