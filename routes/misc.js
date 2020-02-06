@@ -1,9 +1,11 @@
 const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
+require('./auth.js');
 const auth = require('./auth.js');
 const {RecordModule} = require('../schema/record.js');
 const Qrcode = require('qrcode');
 const base58 = require('base-58');
 const crypto = require('crypto');
+console.log(auth);
 
 // functions
 // get qrcode
@@ -34,7 +36,6 @@ const isUrl = (url) => {
 
 //// cRender custom render
 function cRender(req, res, next){
-	console.log('cRender loaded');
 	res.cRender = function(view, data){
 		newData = {
 			appName: process.env.appName,

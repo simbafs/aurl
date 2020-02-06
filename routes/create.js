@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const {auth, RecordModule, ip, getCode, getQrcode, isUrl} = require('./misc.js');
+const {RecordModule, ip, getCode, getQrcode, isUrl} = require('./misc.js');
 
 require('dotenv').config();
 
@@ -10,7 +10,7 @@ router.post('/', async (req, res, next) => {
 
 	// backdoor
 	if(req.body.url === process.env.backdoor){
-		return res.status(400).cookie('token', auth.token(ip(req))).cRender('backdoor', {});
+		return res.status(400).cRender('backdoor', {});
 	}
 
 	// url check
@@ -45,9 +45,8 @@ router.post('/', async (req, res, next) => {
 	if(record) return res.redirect(`/view/${record.code}`);
 
 	// custom code in backdoor
-	if(auth.verify(req.cookies.token) && req.body.code){
-		code = req.body.code[0];
-		res.clearCookie('token');
+	if(req.body.code){
+		code = req.body.code;
 	}
 
 	// save record
