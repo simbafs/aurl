@@ -30,7 +30,7 @@ router.post('/', async (req, res, next) => {
 		});
 	}
 
-	//// exclude ckcsc.net
+	//// exclude host itself
 	if(url.match(process.env.BASEURL)){
 		return res.cRender('view',{
 			code: '',
@@ -42,7 +42,7 @@ router.post('/', async (req, res, next) => {
 
 	// check if url is exist
 	const record = await RecordModule.findOne({url: url});
-	if(record) return res.redirect(`/view/${record.code}`);
+	if(record || req.body.code) return res.redirect(`/view/${record.code}`);
 
 	// custom code in backdoor
 	if(req.body.code){
