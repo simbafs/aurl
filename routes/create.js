@@ -42,7 +42,7 @@ router.post('/', async (req, res, next) => {
 
 	// check if url is exist
 	const record = await RecordModule.findOne({url: url});
-	if(record || req.body.code) return res.redirect(`/view/${record.code}`);
+	if(record && !req.body.code) return res.redirect(`/view/${record.code}`);
 
 	// custom code in backdoor
 	if(req.body.code){
