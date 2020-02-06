@@ -15,7 +15,7 @@ mongoose.connect(process.env.DB, {
 	useUnifiedTopology: true
 	}, (err, db) => {
 		if(err) return console.error(err);
-		console.log(db);
+		console.log('DB connect');
 	});
 
 // view
