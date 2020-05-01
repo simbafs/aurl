@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="./public/asserts/img/icon-1024.png" alt="ckcsc url" width=100>
+	<img src="./public/assets/img/icon-1024.png" alt="ckcsc url" width=100>
 	<h1>CKCSC URL</h1>
 </div>
 
