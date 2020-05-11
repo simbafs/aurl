@@ -4,7 +4,7 @@
 </div>
 
 # url-shortener
-url shortener written in nodejs
+url shortener written in node.js
 
 ## Install
 ```
