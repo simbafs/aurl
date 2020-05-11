@@ -15,7 +15,7 @@ npm start
 ```
 
 ## .env
-this project need a .env file to tell the db url and something can't public on internet  
+This project need a .env file to set the db url and things can't public on internet  
 please conplete the following
 ```
 DB=/url/to/your/db
