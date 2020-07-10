@@ -4,19 +4,30 @@
 </div>
 
 # url-shortener
-url shortener written in node.js
+URL shortener written in Node.js
 
-## Install
-```
-git clone https://github.com/simba-fs/url-shortener.git
-cd url-shortener
-npm i 
-npm start
-```
+## Installation
+### Download the project.
+- With git
+	```BASH
+	git clone --depth 1 https://github.com/simba-fs/url-shortener.git
+	cd url-shortener
+	npm i 
+	```
 
-## .env
-This project needs a `.env` file to set the DB url, and other things can't public on internet  
-please conplete the following
+- Without git
+	```BASH
+	wget https://github.com/simba-fs/url-shortener/archive/master.zip
+	unzip master.sip
+	cd url-shortener-master
+	npm i 
+	```
+
+### Prepare dotenv file
+This project needs a `.env` file to set the DB url, and other things can't public on internet.
+
+Please complete the `.env` example below, and save it to the root directory of this project.
+
 ```INI
 DB=/url/to/your/db
 BASEURL=/your/host/url
@@ -26,6 +37,11 @@ admin="your admin token"
 appName="Your app name"
 title="title"
 subtitle="subtitle"
+```
+
+### Start the server
+```BASH
+npm start
 ```
 
 ## API v1
