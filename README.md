@@ -15,9 +15,9 @@ npm start
 ```
 
 ## .env
-This project need a .env file to set the db url and things can't public on internet  
+This project needs a `.env` file to set the DB url, and other things can't public on internet  
 please conplete the following
-```
+```INI
 DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
@@ -38,10 +38,10 @@ subtitle="subtitle"
 ## [CHANGELOG](./CHANGELOG.md)
 
 ## TODO
-1. brewser addons
-2. click to copy (finish)
-3. add ip record (finish)
-4. improve log
+- Browser addons
+- Improve log
+- ~~Click to copy (finish)~~
+- ~~add ip record (finish)~~
 
 ---
 
