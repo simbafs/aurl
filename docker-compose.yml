@@ -1,7 +1,7 @@
 version: '3'
 services: 
     web:
-        image: 'simba-fs/aurl'
+        image: 'docker.pkg.github.com/simba-fs/aurl/aurl:1.0'
         env_file: 
         - ./.env
         ports: 
