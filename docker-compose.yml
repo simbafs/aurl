@@ -1,8 +1,24 @@
 version: '3'
 services: 
-    web:
-        image: 'docker.pkg.github.com/simba-fs/aurl/aurl:1.0'
-        env_file: 
-        - ./.env
+    db:
+        image: 'mongo'
+        container_name: 'aurl-mongodb'
+        volumes:
+            - ./data/mongo:/data/db
         ports: 
-        - '3000:3000'
+            - '27017:27017'
+    web:
+        image: 'simbafs/aurl:1.0'
+        container_name: 'aurl-web'
+        environment:
+            DB: 'mongodb://db:27017/aurl'
+            BASEURL: 'https://url.ckcsc.net'
+            backdoor: 'https://give.me.backdoor'
+            admin: 'hahathisisadmin'
+            PORT: '3000'
+            
+            appName: "CKCSC Url Shortener"
+            title: "Url Shortener"
+            subtitle: ""
+        ports: 
+            - '3000:3000'
