@@ -1,0 +1,8 @@
+version: '3'
+services: 
+    web:
+        image: 'simba-fs/aurl'
+        env_file: 
+        - ./.env
+        ports: 
+        - '3000:3000'

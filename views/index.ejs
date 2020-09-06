@@ -18,23 +18,18 @@ official website https://url.ckcsc.net">
     <meta name="twitter:title" content="Url Shortener">
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
     <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
-    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
-    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="/assets/css/Copyright.css">
-    <link rel="stylesheet" href="/assets/css/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-with-Button.css">
-    <link rel="stylesheet" href="/assets/css/Navigation-with-Search.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
 </head>
 
 <body class="d-flex flex-column justify-content-center align-items-center justify-content-sm-center align-items-sm-center" style="width: 100vw;height: 100vh;">
-    <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse"
@@ -46,7 +41,6 @@ official website https://url.ckcsc.net">
             </div>
         </div>
     </nav>
-    <!-- End: nav -->
     <div class="container text-center" style="padding: 20px;">
         <div class="card" style="background-color: rgba(0,0,0,0.1);">
             <div class="card-body">
@@ -54,14 +48,13 @@ official website https://url.ckcsc.net">
                 <h6 class="text-muted card-subtitle mb-2"><%= subtitle %></h6>
                 <form action="/c" method="post">
                     <div class="input-group">
-                        <div class="input-group-prepend"><span class="input-group-text">URL</span></div><input class="form-control" type="text" name="url" placeholder="URL" autofocus="" autocomplete="on" inputmode="url" required="" value="https://">
+                        <div class="input-group-prepend"><span class="input-group-text">URL</span></div><input class="form-control" type="text" name="url" placeholder="URL" autofocus="" autocomplete="on" inputmode="url" required="">
                         <div class="input-group-append"><button class="btn btn-primary" type="submit">Go!</button></div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- Start: footer -->
     <footer class="text-center" style="background-color: rgba(89,141,184,0);">
         <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
             <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
@@ -95,14 +88,9 @@ official website https://url.ckcsc.net">
   background-color: #eee !important;
 }    
 </style></footer>
-    <!-- End: footer -->
-    <script src="/assets/js/jquery.min.js"></script>
-    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/bs-init.js"></script>
-    <script src="/assets/js/clipboard.min.js"></script>
-    <script src="/assets/js/cpoy.js"></script>
-    <script src="/assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
-    <script src="/assets/js/darkmode.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/script.min.js"></script>
 </body>
 
 </html>

@@ -28,7 +28,7 @@ This project needs a `.env` file to set the DB url, and other things can't publi
 
 Please complete the `.env` example below, and save it to the root directory of this project.
 
-```INI
+```env
 DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
@@ -42,6 +42,19 @@ subtitle="subtitle"
 ### Start the server
 ```BASH
 npm start
+```
+
+## Start with Docker
+1. install docker, docker-compose
+2. run the following command
+```bash
+mkdir aurl
+cd aurl
+wget https://raw.githubusercontent.com/simba-fs/aurl/master/docker-compose.yml
+wget https://raw.githubusercontent.com/simba-fs/aurl/master/env-sample
+mv env-sample .env
+# then edit .env file
+docker-compose up -d
 ```
 
 ## API v1
