@@ -4,9 +4,8 @@ FROM node:12
 WORKDIR /aurl 
 COPY package*.json ./
 RUN npm i --only=production
-RUN npm i pm2 -g
 
 COPY . ./
 EXPOSE 3000
-CMD ["pm2-runtime", "bin/www"]
+CMD ["node", "bin/www"]
 
