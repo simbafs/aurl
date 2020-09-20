@@ -27,6 +27,17 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="/assets/css/styles.min.css">
+<% if(locals.GAid){ %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GAid%>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= GAid%>');
+  </script>
+<% } %>
 </head>
 
 <body class="d-md-flex flex-column justify-content-md-center align-items-md-center" style="height: 100vh;padding-top: 100px;">

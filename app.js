@@ -19,6 +19,12 @@ app.set('view engine', 'ejs');
 // load env
 require('dotenv').config();
 
+// Google Analytics
+app.use((req, res, next) => {
+	res.locals.GAid = process.env.GAid;
+	next();
+})
+
 // functions
 const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 
