@@ -3,7 +3,6 @@ const {RecordModule} = require('../../schema/record.js');
 
 // verify url
 function verifyUrl(req, res, next){
-	console.log('verify url');
 	var prasedUrl = require('url').parse(req.body.url);
 	if( prasedUrl.host &&
 		prasedUrl.hostname &&

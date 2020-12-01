@@ -11,7 +11,6 @@ router.get('/', async (req, res, next) => {
 	await RecordModule.find({}, (err, data) => {
 		var records = [];
 		data.forEach((item)=>{
-			console.log(moment(item.date).locale('zh-tw').tz('Asia/Taipei').format('LLLL'));
 			records.push({
 				code: item.code,
 				url: item.url,
@@ -19,7 +18,6 @@ router.get('/', async (req, res, next) => {
 				ip: item.ip || 'none'
 			});
 		});
-		console.table(records);
 		res.cRender('admin', {
 			records: records
 		});

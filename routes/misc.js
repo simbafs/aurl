@@ -5,7 +5,6 @@ const {RecordModule} = require('../schema/record.js');
 const Qrcode = require('qrcode');
 const base58 = require('base-58');
 const crypto = require('crypto');
-console.log(auth);
 
 // functions
 // get qrcode

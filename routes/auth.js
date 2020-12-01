@@ -3,7 +3,6 @@
 	await require('./misc.js');
 	const {getCode} = require('./misc.js');
 	require('dotenv').config();
-	console.log(getCode);
 	
 	// user pool
 	var users = [];
