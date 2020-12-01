@@ -11,13 +11,15 @@ router.get('/', async (req, res, next) => {
 	await RecordModule.find({}, (err, data) => {
 		var records = [];
 		data.forEach((item)=>{
+			console.log(moment(item.date).locale('zh-tw').tz('Asia/Taipei').format('LLLL'));
 			records.push({
 				code: item.code,
 				url: item.url,
-				date: moment(item.time).locale('zh-tw').tz('Asia/Taipei').format('LLLL'),
+				date: moment(item.date).locale('zh-tw').tz('Asia/Taipei').format('LLLL'),
 				ip: item.ip || 'none'
 			});
 		});
+		console.table(records);
 		res.cRender('admin', {
 			records: records
 		});
