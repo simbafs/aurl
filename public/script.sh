@@ -1,4 +1,4 @@
-rm assets -rf
+# rm assets -rf
 mv -f bss/* . 
 rm component.html 
 rename 's/html/ejs/' *
@@ -9,5 +9,5 @@ sed -i 's/assets/\/assets/g' *.ejs
 rm -rf ../views/*
 mv -f *.ejs ../views/
 
-# debug
-# mv ../views/index-1.ejs test.html
+# debug&&
+# mv ../views/index-1.ejs test.html&&

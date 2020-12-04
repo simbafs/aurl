@@ -27,7 +27,6 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css">
     <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
     <link rel="stylesheet" href="/assets/css/styles.min.css">
-    <link rel="stylesheet" href="/assets/css/dataTables.bootstrap4.min.min.css">
 <% if(locals.GAid){ %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GAid%>"></script>
@@ -45,29 +44,39 @@ official website https://url.ckcsc.net">
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button class="navbar-toggler" data-toggle="collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
     </nav>
-    <div class="container bg-light shadow-lg" style="padding: 20px;height: 65vh;">
+    <div class="container bg-light shadow-lg" id="adminTable" style="padding: 20px;height: 65vh;">
+        <div class="row">
+            <div class="col-md-1 overflow-wrap">
+                <p>Index</p>
+            </div>
+            <div class="col-md-2 overflow-wrap">
+                <p>Code</p>
+            </div>
+            <div class="col overflow-wrap">
+                <p>Url</p>
+            </div>
+            <div class="col-md-3 overflow-wrap">
+                <p>Date</p>
+            </div>
+            <div class="col-md-2 overflow-wrap">
+                <p>IP</p>
+            </div>
+        </div>
         <div class="overflow-y" style="height: 90%;"><% for(var i of records){ %>
-            <div class="table-responsive">
-                <table class="table" id="adminTable">
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Code</th>
-                            <th>URL</th>
-                            <th>Create Date</th>
-                            <th>IP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><%= records.indexOf(i)+1 %></td>
-                            <td><%= i.code %></td>
-                            <td><a href="<%= i.url %>" target="_blank"><span style="text-decoration: underline;"><%= i.url %></span></a></td>
-                            <td><%= i.date %></td>
-                            <td><%= i.date %></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="row">
+                <div class="col-md-1 overflow-wrap">
+                    <p><%= records.indexOf(i)+1 %></p>
+                </div>
+                <div class="col-md-2 overflow-wrap" style="height: 90%;">
+                    <p><%= i.code %></p>
+                </div>
+                <div class="col overflow-wrap"><a href="<%= i.url %>" target="_blank"><span style="text-decoration: underline;"><%= i.url %></span></a></div>
+                <div class="col-md-3 overflow-wrap">
+                    <p><%= i.date %></p>
+                </div>
+                <div class="col-md-2 overflow-wrap">
+                    <p><%= i.ip %></p>
+                </div>
             </div><% } %></div>
     </div>
     <footer class="text-center" style="background-color: rgba(89,141,184,0);">
@@ -106,8 +115,6 @@ official website https://url.ckcsc.net">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/js/script.min.js"></script>
-    <script src="/assets/js/dataTables.bootstrap4.min.min.js"></script>
-    <script src="/assets/js/admin.min.js"></script>
 </body>
 
 </html>
