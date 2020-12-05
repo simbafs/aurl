@@ -46,29 +46,30 @@ official website https://url.ckcsc.net">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button class="navbar-toggler" data-toggle="collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
     </nav>
     <div class="container bg-light shadow-lg" style="padding: 20px;height: 65vh;">
-        <div class="overflow-y" style="height: 90%;"><% for(var i of records){ %>
-            <div class="table-responsive">
-                <table class="table" id="adminTable">
-                    <thead>
-                        <tr>
-                            <th>Index</th>
-                            <th>Code</th>
-                            <th>URL</th>
-                            <th>Create Date</th>
-                            <th>IP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><%= records.indexOf(i)+1 %></td>
-                            <td><%= i.code %></td>
-                            <td><a href="<%= i.url %>" target="_blank"><span style="text-decoration: underline;"><%= i.url %></span></a></td>
-                            <td><%= i.date %></td>
-                            <td><%= i.date %></td>
-                        </tr>
-                    </tbody>
-                </table>
+        <div class="overflow-y" style="height: 90%;"><div class="table-responsive">
+    <table class="table" id="adminTable">
+        <thead>
+            <tr>
+                <th>Index</th>
+                <th>Code</th>
+                <th>URL</th>
+                <th>Create Date</th>
+                <th>IP</th>
+            </tr> 
+        </thead>
+        <tbody>
+            <% for(var i of records){ %>
+                <tr>
+                    <td><%= records.indexOf(i)+1 %></td>
+                    <td><%= i.code %></td>
+                    <td><a href="<%= i.url %>" target="_blank"><span style="text-decoration: underline;"><%= i.url %></span></a></td>
+                    <td><%= i.date %></td>
+                    <td><%= i.date %></td>
+                </tr>
             </div><% } %></div>
+        </tbody>
+    </table>
+</div></div>
     </div>
     <footer class="text-center" style="background-color: rgba(89,141,184,0);">
         <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
