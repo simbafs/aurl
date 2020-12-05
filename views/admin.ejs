@@ -46,7 +46,14 @@ official website https://url.ckcsc.net">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button class="navbar-toggler" data-toggle="collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
     </nav>
     <div class="container bg-light shadow-lg" style="padding: 20px;height: 65vh;">
-        <div class="overflow-y" style="height: 90%;"><div class="table-responsive">
+        <div class="overflow-y" style="height: 90%;"><style>
+    td{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+</style>
+<div class="table-responsive">
     <table class="table" id="adminTable">
         <thead>
             <tr>
