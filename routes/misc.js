@@ -25,7 +25,7 @@ const isUrl = (url) => {
 	// console.log(prasedUrl);
 	if( prasedUrl.host &&
 		prasedUrl.hostname &&
-		prasedUrl.pathname && 
+		prasedUrl.pathname &&
 		prasedUrl.protocol &&
 		prasedUrl.slashes ){
 		return true;
@@ -33,27 +33,11 @@ const isUrl = (url) => {
 	return false;
 };
 
-//// cRender custom render
-function cRender(req, res, next){
-	res.cRender = function(view, data){
-		newData = {
-			appName: process.env.appName,
-			title: process.env.title,
-			subtitle: process.env.subtitle,
-			ip: ip(req),
-			...data
-		}
-		res.render(view, newData);
-	}
-	next();
-}
-
 module.exports = {
 	auth: auth,
 	RecordModule: RecordModule,
 	ip: ip,
 	getQrcode: getQrcode,
 	getCode: getCode,
-	isUrl: isUrl,
-	cRender: cRender
+	isUrl: isUrl
 }

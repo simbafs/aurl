@@ -18,7 +18,7 @@ router.get('/', async (req, res, next) => {
 				ip: item.ip || 'none'
 			});
 		});
-		res.cRender('admin', {
+		res.render('admin', {
 			records: records
 		});
 	});

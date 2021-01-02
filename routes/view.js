@@ -7,7 +7,7 @@ router.post('/', (req, res, nect) => {
 });
 
 router.get('/', (req, res, next) => {
-	res.cRender('view-index');
+	res.render('view-index');
 });
 
 router.get('/:code', async (req, res, next) => {
@@ -16,12 +16,12 @@ router.get('/:code', async (req, res, next) => {
 	const record = await RecordModule.findOne({code: code});
 	
 	// check if code found
-	if(!record) return res.cRender('notFound', {
+	if(!record) return res.render('notFound', {
 		code: code,
 		baseUrl: process.env.BASEURL
 	})
 
-	res.cRender('view', {
+	res.render('view', {
 		code: record.code,
 		url: record.url,
 		baseUrl: process.env.BASEURL,

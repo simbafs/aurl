@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const {cRender} = require('./routes/misc.js');
 
 const indexRouter = require('./routes/index.js');
 const apiRouter = require('./routes/api.js');
@@ -38,7 +37,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cRender);
+app.use((req, res, next) =>{
+	res.locals = {
+		...res.locals,
+		appName: process.env.appName,
+		title: process.env.title,
+		subtitle: process.env.subtitle,
+		ip: ip(req),
+	}
+	next();
+});
 
 app.use('/admin', adminRouter);
 app.use('/api', apiRouter);
@@ -60,7 +68,7 @@ app.use(function(err, req, res, next) {
 
 	// render the error page
 	res.status(err.status || 500);
-	res.cRender('error', err);
+	res.render('error', err);
 });
 
 module.exports = app;

@@ -29,7 +29,7 @@ router.get('/:code', async (req, res, next) => {
 
 	// check if code is exist
 	const record = await RecordModule.findOne({code: code});
-	if(!record) return res.status(404).cRender('notFound', {
+	if(!record) return res.status(404).render('notFound', {
 		baseUrl: process.env.BASEURL,
 		code: code
 	});
@@ -40,7 +40,7 @@ router.get('/:code', async (req, res, next) => {
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-	res.cRender('index');
+	res.render('index');
 });
 
 

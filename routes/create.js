@@ -10,7 +10,7 @@ router.post('/', async (req, res, next) => {
 
 	// backdoor
 	if(req.body.url === process.env.backdoor){
-		return res.status(400).cRender('backdoor', {});
+		return res.status(400).render('backdoor', {});
 	}
 
 	// url check
@@ -21,7 +21,7 @@ router.post('/', async (req, res, next) => {
 
 	//// verify url
 	if(!isUrl(url)){
-		return res.cRender('error', {
+		return res.render('error', {
 			error: {
 				status: 400,
 				stack: 'invalid url',
@@ -32,7 +32,7 @@ router.post('/', async (req, res, next) => {
 
 	//// exclude host itself
 	if(url.match(process.env.BASEURL)){
-		return res.cRender('view',{
+		return res.render('view',{
 			code: '',
 			url: url,
 			baseUrl: process.env.BASEURL,
@@ -58,7 +58,7 @@ router.post('/', async (req, res, next) => {
 
 	await recode.save()
 		.then(async () => res.redirect(`/view/${code}`))
-		.catch((error) => res.cRender('error', error));
+		.catch((error) => res.render('error', error));
 });
 
 module.exports = router;
