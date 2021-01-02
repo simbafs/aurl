@@ -3,11 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
-const indexRouter = require('./routes/index.js');
-const apiRouter = require('./routes/api.js');
-const adminRouter = require('./routes/admin.js');
-const errorRoutwe = require('./routes/error.js');
+const cors = require('cors');
 
 const app = express();
 
@@ -36,6 +32,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) =>{
 	res.locals = {
@@ -48,10 +45,11 @@ app.use((req, res, next) =>{
 	next();
 });
 
-app.use('/admin', adminRouter);
-app.use('/api', apiRouter);
-app.use('/error', errorRoutwe);
-app.use('/', indexRouter);
+app.use('/verify', require('./routes/verify.js'));
+app.use('/admin', require('./routes/admin.js'));
+app.use('/api', require('./routes/api.js'));
+app.use('/error', require('./routes/error.js'));
+app.use('/', require('./routes/index.js'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
