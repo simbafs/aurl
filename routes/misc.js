@@ -1,6 +1,4 @@
 const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
-require('./auth.js');
-const auth = require('./auth.js');
 const {RecordModule} = require('../schema/record.js');
 const Qrcode = require('qrcode');
 const base58 = require('base-58');
@@ -34,7 +32,6 @@ const isUrl = (url) => {
 };
 
 module.exports = {
-	auth: auth,
 	RecordModule: RecordModule,
 	ip: ip,
 	getQrcode: getQrcode,

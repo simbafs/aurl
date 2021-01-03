@@ -32,7 +32,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors);
+app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) =>{
 	res.locals = {
@@ -45,7 +45,12 @@ app.use((req, res, next) =>{
 	next();
 });
 
-app.use('/verify', require('./routes/verify.js'));
+// app.use((req, res, next) => {
+//     console.log('test');
+//     next();
+// })
+//
+// app.use('/verify', require('./routes/verify.js'));
 app.use('/admin', require('./routes/admin.js'));
 app.use('/api', require('./routes/api.js'));
 app.use('/error', require('./routes/error.js'));

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const moment = require('moment-timezone');
-const {auth, RecordModule, ip} = require('./misc.js');
+const {RecordModule, ip} = require('./misc.js');
 require('dotenv').config();
 
 
