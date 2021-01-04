@@ -46,11 +46,11 @@ app.use((req, res, next) =>{
 });
 
 // app.use((req, res, next) => {
-//     console.log('test');
+//     console.log(req.body);
 //     next();
 // })
 //
-// app.use('/verify', require('./routes/verify.js'));
+app.use('/verify', require('./routes/verify.js'));
 app.use('/admin', require('./routes/admin.js'));
 app.use('/api', require('./routes/api.js'));
 app.use('/error', require('./routes/error.js'));

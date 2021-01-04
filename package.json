@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test": "nodemon start"
+    "dev": "DEBUG=url-shortener:*  nodemon start"
   },
   "dependencies": {
     "alertifyjs": "^1.13.1",
+    "axios": "^0.21.1",
     "base-58": "0.0.1",
     "clipboard": "^2.0.6",
     "cookie-parser": "^1.4.5",
