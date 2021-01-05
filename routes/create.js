@@ -18,17 +18,17 @@ router.post('/', async (req, res, next) => {
 	}
 
 	// hcaptcha check
-	if(secret){
-		let data = {
-			response: response,
-			secret: secret
-		}
-		// console.log(data);
-		axios.post('http://localhost:3000/verify', {
-			'h-captcha-response': response
-		}).then(d => console.log(d.data))
-		// axios.post('https://hcaptcha.com/siteverify', data).then(data => console.log(data.data));
-	}
+	// if(secret){
+	//     let data = {
+	//         response: response,
+	//         secret: secret
+	//     }
+	//     // console.log(data);
+	//     axios.post('http://localhost:3000/verify', {
+	//         'h-captcha-response': response
+	//     }).then(d => console.log(d.data))
+	//     // axios.post('https://hcaptcha.com/siteverify', data).then(data => console.log(data.data));
+	// }
 
 	// url check
 	//// check url is not empty

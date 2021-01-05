@@ -6,3 +6,6 @@ admin=admin
 appName="URL"
 title="URL shortenrt"
 subtitle=""
+
+HCAPTCHA_SECRET_KEY=your_secret_key
+GAid=Google_Analytics_ID

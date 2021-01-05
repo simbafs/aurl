@@ -36,10 +36,14 @@ DB=/url/to/your/db
 BASEURL=/your/host/url
 backdoor=/backdoor/token
 admin="your admin token"
+email=support@aurl.com
 
 appName="Your app name"
 title="title"
 subtitle="subtitle"
+
+HCAPTCHA_SECRET_KEY=your_secret_key
+GAid=Google_Analytics_ID
 ```
 
 ### Start the server
