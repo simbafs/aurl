@@ -1,3 +1,5 @@
+const config = require('config');
+
 const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
 const {RecordModule} = require('../schema/record.js');
 const Qrcode = require('qrcode');
@@ -8,7 +10,7 @@ const crypto = require('crypto');
 // get qrcode
 const getQrcode = async (code) => {
 	var qrcode;
-	await Qrcode.toDataURL(`${process.env.BASEURL}/${code}`)
+	await Qrcode.toDataURL(`${config.get('app.BASEURL')}/${code}`)
 		.then((url) => qrcode = url);
 	return qrcode;
 }

@@ -2,7 +2,6 @@
 	const crypto = require('crypto');
 	await require('./misc.js');
 	const {getCode} = require('./misc.js');
-	require('dotenv').config();
 	
 	// user pool
 	var users = [];

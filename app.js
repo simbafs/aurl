@@ -1,3 +1,5 @@
+const config = require('config');
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -10,15 +12,6 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
-// load env
-require('dotenv').config();
-
-// Google Analytics
-app.use((req, res, next) => {
-	res.locals.GAid = process.env.GAid;
-	next();
-})
 
 // functions
 const ip = (req) => (req.headers['x-forwarded-for'] || req.connection.remoteAddress).replace('::ffff:', '');
@@ -34,14 +27,18 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// locals
 app.use((req, res, next) =>{
 	res.locals = {
 		...res.locals,
-		appName: process.env.appName,
-		title: process.env.title,
-		subtitle: process.env.subtitle,
 		ip: ip(req),
-		email: process.env.email || ''
+		appName: config.get('app.appName'),
+		title: config.get('app.title'),
+		subtitle: config.get('app.subtitle'),
+		email: config.get('app.email'),
+		hcaptcha: config.get('other.hcaptcha.sitekey'),
+		GAid: config.get('other.GAid')
 	}
 	next();
 });

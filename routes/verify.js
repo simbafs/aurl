@@ -1,7 +1,9 @@
+const config = require('config');
+
 const router = require('express').Router();
 const captcha = require('express-hcaptcha');
 
-const SECRET = process.env.HCAPTCHA_SECRET_KEY;
+const SECRET = config.get('other.hcaptcha.secret');
 
 if(SECRET){
 	router.post('/', (req, res, next) => {

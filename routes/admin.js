@@ -1,12 +1,10 @@
 const router = require('express').Router();
 const moment = require('moment-timezone');
 const {RecordModule, ip} = require('./misc.js');
-require('dotenv').config();
-
 
 router.get('/', async (req, res, next) => {
 	// check permission
-	if(req.cookies.admin !== process.env.admin) return next();
+	if(req.cookies.admin !== config.get('app.admin')) return next();
 
 	await RecordModule.find({}, (err, data) => {
 		var records = [];

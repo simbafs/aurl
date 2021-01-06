@@ -1,3 +1,5 @@
+const config = require('config');
+
 const router = require('express').Router();
 const {ip, RecordModule} = require('./misc.js');
 const mongoose = require('mongoose');
@@ -6,11 +8,8 @@ const mongoose = require('mongoose');
 const viewRouter = require('./view.js');
 const createRouter = require('./create.js');
 
-// load env
-require('dotenv').config();
-
 // connect to DB
-mongoose.connect(process.env.DB, {
+mongoose.connect(config.get('DB'), {
 	useNewUrlParser: true,
 	useUnifiedTopology: true
 	}, (err, db) => {
@@ -30,7 +29,7 @@ router.get('/:code', async (req, res, next) => {
 	// check if code is exist
 	const record = await RecordModule.findOne({code: code});
 	if(!record) return res.status(404).render('notFound', {
-		baseUrl: process.env.BASEURL,
+		baseUrl: config.get('app.BASEURL'),
 		code: code
 	});
 	

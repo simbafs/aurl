@@ -1,10 +1,8 @@
+const config = require('config');
+
 const router = require('express').Router();
 const {RecordModule, ip, getCode, getQrcode, isUrl} = require('./misc.js');
 const axios = require('axios').default;
-const secret = process.env.HCAPTCHA_SECRET_KEY;
-
-
-require('dotenv').config();
 
 // create new record
 router.post('/', async (req, res, next) => {
@@ -13,22 +11,9 @@ router.post('/', async (req, res, next) => {
 	var response = req.body['h-captcha-response'];
 
 	// backdoor
-	if(req.body.url === process.env.backdoor){
+	if(req.body.url === config.get('app.backdoor')){
 		return res.status(400).render('backdoor', {});
 	}
-
-	// hcaptcha check
-	// if(secret){
-	//     let data = {
-	//         response: response,
-	//         secret: secret
-	//     }
-	//     // console.log(data);
-	//     axios.post('http://localhost:3000/verify', {
-	//         'h-captcha-response': response
-	//     }).then(d => console.log(d.data))
-	//     // axios.post('https://hcaptcha.com/siteverify', data).then(data => console.log(data.data));
-	// }
 
 	// url check
 	//// check url is not empty
@@ -48,11 +33,11 @@ router.post('/', async (req, res, next) => {
 	}
 
 	//// exclude host itself
-	if(url.match(process.env.BASEURL)){
+	if(url.match(config.get('app.BASEURL'))){
 		return res.render('view',{
 			code: '',
 			url: url,
-			baseUrl: process.env.BASEURL,
+			baseUrl: config.get('app.BASEURL'),
 			qrcode: await getQrcode(''),
 		});
 	}

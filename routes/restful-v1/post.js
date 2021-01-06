@@ -1,14 +1,15 @@
+const config = require('config');
+
 const router = require('express').Router();
 const base58 = require('base-58');
 const crypto = require('crypto');
 const {RecordModule} = require('../../schema/record.js');
-require('dotenv').config();
 
 // functions
 //// get qrcode
 const getQrcode = async (code) => {
 	var qrcode;
-	await Qrcode.toDataURL(`${process.env.BASEURL}/${code}`)
+	await Qrcode.toDataURL(`${config.get('app.BASEURL')}/${code}`)
 		.then((url) => qrcode = url);
 	return qrcode;
 }
@@ -55,16 +56,16 @@ router.post('/create', async (req, res, next) => {
 	});
 
 	// exclude ckcsc.net
-	if(url.match(process.env.BASEURL)){
+	if(url.match(config.get('app.BASEURL'))){
 		return res.status(400).send({
-			error: `url can\'t contain ${process.env.BASEURL}`
+			error: `url can\'t contain ${config.get('app.BASEURL')}`
 		});
 	}
 
 	// check if url is exist
 	const record = await RecordModule.findOne({url: url});
 	if(record) return res.send({
-		surl: `${process.env.BASEURL}/${record.code}`,
+		surl: `${config.get('app.BASEURL')}/${record.code}`,
 		url: record.url,
 		code: record.code,
 		date: record.date
@@ -79,7 +80,7 @@ router.post('/create', async (req, res, next) => {
 
 	await recode.save()
 		.then(() => res.send({
-			surl: `${process.env.BASEURL}/${code}`,
+			surl: `${config.get('app.BASEURL')}/${code}`,
 			url: record.url,
 			code: record.code,
 			date: record.date

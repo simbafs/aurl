@@ -60,8 +60,9 @@ official website https://url.ckcsc.net">
                     <div class="input-group">
                         <div class="input-group-prepend"><span class="input-group-text">URL</span></div><input class="form-control" type="text" name="url" placeholder="URL" autofocus="" autocomplete="on" inputmode="url" required="">
                         <div class="input-group-append"><button class="btn btn-primary" type="submit">Go!</button></div>
-                    </div>
-                    <div class="h-captcha" data-sitekey="5d2378f0-340f-46aa-819d-9d80a2176a1a"></div>
+                    </div><% if(locals.hcaptcha){ %>
+    <div class="h-captcha" data-sitekey="<%= hcaptcha %>"></div>
+<% } %>
                 </form>
             </div>
         </div>

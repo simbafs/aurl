@@ -63,3 +63,4 @@ typings/
 *.swp
 tags
 data/
+config/local*

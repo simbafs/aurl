@@ -1,6 +1,7 @@
+const config = require('config');
+
 const router = require('express').Router();
 const {RecordModule, ip, getQrcode} = require('./misc.js');
-require('dotenv').config();
 
 router.post('/', (req, res, nect) => {
 	res.redirect(`/view/${req.body.code.replace(/ /g, '')}`);
@@ -18,13 +19,13 @@ router.get('/:code', async (req, res, next) => {
 	// check if code found
 	if(!record) return res.render('notFound', {
 		code: code,
-		baseUrl: process.env.BASEURL
+		baseUrl: config.get('app.BASEURL')
 	})
 
 	res.render('view', {
 		code: record.code,
 		url: record.url,
-		baseUrl: process.env.BASEURL,
+		baseUrl: config.get('app.BASEURL'),
 		qrcode: await getQrcode(code)
 	});
 });

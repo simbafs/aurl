@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node ./bin/index.js",
     "dev": "DEBUG=url-shortener:*  nodemon start"
   },
   "dependencies": {
@@ -11,10 +11,10 @@
     "axios": "^0.21.1",
     "base-58": "0.0.1",
     "clipboard": "^2.0.6",
+    "config": "^3.3.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
-    "dotenv": "^8.2.0",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-hcaptcha": "0.0.3",
@@ -24,7 +24,8 @@
     "moment-timezone": "^0.5.27",
     "mongoose": "^5.9.11",
     "morgan": "~1.9.1",
-    "qrcode": "^1.4.4"
+    "qrcode": "^1.4.4",
+    "update-notifier": "^5.0.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
