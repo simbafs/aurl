@@ -1,13 +1,12 @@
 {
-  "name": "url-shortener",
-  "version": "0.0.0",
+  "name": "AURL",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/index.js",
-    "dev": "DEBUG=url-shortener:*  nodemon start"
+    "dev": "DEBUG=AURL:*  nodemon start"
   },
   "dependencies": {
-    "alertifyjs": "^1.13.1",
     "axios": "^0.21.1",
     "base-58": "0.0.1",
     "clipboard": "^2.0.6",
@@ -20,7 +19,6 @@
     "express-hcaptcha": "0.0.3",
     "http-errors": "~1.6.3",
     "jquery": "^3.5.1",
-    "jsonwebtoken": "^8.5.1",
     "moment-timezone": "^0.5.32",
     "mongoose": "^5.11.10",
     "morgan": "~1.9.1",
