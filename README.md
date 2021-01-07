@@ -1,6 +1,6 @@
 <div align="center">
 	<img src="./public/assets/img/icon-1024.png" alt="AURL" width=100>
-	<h1>CKCSC URL</h1>
+	<h1>AURL</h1>
 </div>
 
 # AURL
