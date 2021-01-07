@@ -5,6 +5,7 @@
 
 # url-shortener
 URL shortener written in Node.js
+[Demo](https://aurl.simba-fs.dev)
 
 ## Start with Docker
 see [https://github.com/simba-fs/aurl-docker-deploy](https://github.com/simba-fs/aurl-docker-deploy)
@@ -13,38 +14,26 @@ see [https://github.com/simba-fs/aurl-docker-deploy](https://github.com/simba-fs
 ### Download the project.
 - With git
 	```BASH
-	git clone --depth 1 https://github.com/simba-fs/url-shortener.git
-	cd url-shortener
+	git clone --depth 1 https://github.com/simba-fs/aurl.git
+	cd aurl
 	npm i 
 	```
-
 - Without git
 	```BASH
-	wget https://github.com/simba-fs/url-shortener/archive/master.zip
+	wget https://github.com/simba-fs/aurl/archive/master.zip
 	unzip master.sip
-	cd url-shortener-master
+	cd aurl
 	npm i 
 	```
 
-### Prepare dotenv file
-This project needs a `.env` file to set the DB url, and other things can't public on internet.
+### config file
+AURL can run none-config with a mongodb server. You can custom your own config by editing your own `config/local.json`. Example is placed in `config/default.json`.
 
-Please complete the `.env` example below, and save it to the root directory of this project.
+### Google Analytics
+GA is available in AURL. To enable it, modify `other.GAid` in `config/local.json`.
 
-```env
-DB=/url/to/your/db
-BASEURL=/your/host/url
-backdoor=/backdoor/token
-admin="your admin token"
-email=support@aurl.com
-
-appName="Your app name"
-title="title"
-subtitle="subtitle"
-
-HCAPTCHA_SECRET_KEY=your_secret_key
-GAid=Google_Analytics_ID
-```
+### hCaptcah
+You can enable hCaptcha by editing `other.hcaptcha` in `config.local.json`. Once enabled, a captcha will insert in the index page below URL input.
 
 ### Start the server
 ```BASH
