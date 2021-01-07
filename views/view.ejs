@@ -26,7 +26,7 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
 <% if(locals.GAid){ %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GAid%>"></script>
@@ -41,6 +41,7 @@ official website https://url.ckcsc.net">
 </head>
 
 <body class="d-flex flex-column justify-content-center align-items-center" style="height: 100vh;padding-top: 90px;">
+    <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -50,7 +51,7 @@ official website https://url.ckcsc.net">
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav><!-- End: nav -->
     <div class="container" style="padding: 20px;">
         <div class="card d-flex flex-column" style="background-color: rgba(0,0,0,0.1);">
             <div class="card-body text-center flex-column align-items-lg-center">
@@ -65,7 +66,7 @@ official website https://url.ckcsc.net">
                 </div>
             </div>
         </div>
-    </div>
+    </div><!-- Start: footer -->
     <footer class="text-center" style="background-color: rgba(89,141,184,0);">
         <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
             <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
@@ -100,16 +101,11 @@ official website https://url.ckcsc.net">
   background-color: #eee !important;
 }    
 </style>
-    </footer>
+    </footer><!-- End: footer -->
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/bs-init.js"></script>
-    <script src="/assets/js/clipboard.min.js"></script>
-    <script src="/assets/js/cpoy.js"></script>
-    <script src="/assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
-    <script src="/assets/js/darkmode.js"></script>
-    <script src="/assets/js/datatables.min.js"></script>
     <script src="https://hcaptcha.com/1/api.js/?hl=zh-TW"></script>
+    <script src="/assets/js/script.min.js"></script>
 </body>
 
 </html>

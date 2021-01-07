@@ -26,8 +26,8 @@ official website https://url.ckcsc.net">
     <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
     <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
-    <link rel="stylesheet" href="/assets/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+    <link rel="stylesheet" href="/assets/css/dataTables.bootstrap4.min.min.css">
 <% if(locals.GAid){ %>
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GAid%>"></script>
@@ -42,9 +42,10 @@ official website https://url.ckcsc.net">
 </head>
 
 <body class="d-md-flex flex-column justify-content-md-center align-items-md-center" style="height: 100vh;padding-top: 100px;">
+    <!-- Start: nav -->
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
         <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button class="navbar-toggler" data-toggle="collapse"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
-    </nav>
+    </nav><!-- End: nav -->
     <div class="container bg-light shadow-lg" style="padding: 20px;height: 65vh;">
         <div class="overflow-y" style="height: 90%;"><style>
     td{
@@ -77,7 +78,7 @@ official website https://url.ckcsc.net">
         </tbody>
     </table>
 </div></div>
-    </div>
+    </div><!-- Start: footer -->
     <footer class="text-center" style="background-color: rgba(89,141,184,0);">
         <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
             <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
@@ -112,18 +113,13 @@ official website https://url.ckcsc.net">
   background-color: #eee !important;
 }    
 </style>
-    </footer>
+    </footer><!-- End: footer -->
     <script src="/assets/js/jquery.min.js"></script>
     <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/assets/js/bs-init.js"></script>
-    <script src="/assets/js/clipboard.min.js"></script>
-    <script src="/assets/js/cpoy.js"></script>
-    <script src="/assets/js/File-Input---Beautiful-Input--Button-Approach-Jasny-Bootstrap.js"></script>
-    <script src="/assets/js/darkmode.js"></script>
-    <script src="/assets/js/datatables.min.js"></script>
-    <script src="/assets/js/dataTables.bootstrap4.min.js"></script>
-    <script src="/assets/js/admin.js"></script>
     <script src="https://hcaptcha.com/1/api.js/?hl=zh-TW"></script>
+    <script src="/assets/js/script.min.js"></script>
+    <script src="/assets/js/dataTables.bootstrap4.min.min.js"></script>
+    <script src="/assets/js/admin.min.js"></script>
 </body>
 
 </html>
