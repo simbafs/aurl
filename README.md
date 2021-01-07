@@ -1,11 +1,11 @@
 <div align="center">
-	<img src="./public/assets/img/icon-1024.png" alt="ckcsc url" width=100>
+	<img src="./public/assets/img/icon-1024.png" alt="AURL" width=100>
 	<h1>CKCSC URL</h1>
 </div>
 
-# url-shortener
-URL shortener written in Node.js
-[Demo](https://aurl.simba-fs.dev)
+# AURL
+URL shortener written in Node.js  
+[Demo (https://aurl.simba-fs.dev)](https://aurl.simba-fs.dev)
 
 ## Start with Docker
 see [https://github.com/simba-fs/aurl-docker-deploy](https://github.com/simba-fs/aurl-docker-deploy)
@@ -27,16 +27,16 @@ see [https://github.com/simba-fs/aurl-docker-deploy](https://github.com/simba-fs
 	```
 
 ### config file
-AURL can run none-config with a mongodb server. You can custom your own config by editing your own `config/local.json`. Example is placed in `config/default.json`.
+AURL has a preset config (`config/default.json`), the only thing you need to do is starting a localhost mongodb server (port 27017). To customize your own config, edit your own `config/local.json`. Examp	le is placed in `config/default.json`.
 
 ### Google Analytics
 GA is available in AURL. To enable it, modify `other.GAid` in `config/local.json`.
 
 ### hCaptcah
-You can enable hCaptcha by editing `other.hcaptcha` in `config.local.json`. Once enabled, a captcha will insert in the index page below URL input.
+You can enable hCaptcha by editing `other.hcaptcha` in `config.local.json`. Once enabled, a captcha section will insert in the index page below URL input.
 
 ### Start the server
-```BASH
+```bash
 npm start
 ```
 
@@ -46,8 +46,6 @@ npm start
 | GET    | /code   | code   |
 | GET    | /url    | url    |
 | POST   | /create | url    |
-
-## [CHANGELOG](./CHANGELOG.md)
 
 ## TODO
 - Browser addons
