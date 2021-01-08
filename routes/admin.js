@@ -1,3 +1,5 @@
+const config = require('config');
+
 const router = require('express').Router();
 const moment = require('moment-timezone');
 const {RecordModule, ip} = require('./misc.js');

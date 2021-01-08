@@ -2,23 +2,18 @@ const config = require('config');
 
 const router = require('express').Router();
 const {ip, RecordModule} = require('./misc.js');
-const mongoose = require('mongoose');
 
 // router
 const viewRouter = require('./view.js');
 const createRouter = require('./create.js');
 
-// connect to DB
-mongoose.connect(config.get('DB'), {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-	}, (err, db) => {
-		if(err) return console.error(err);
-		console.log('DB connect');
-	});
-
 // view
 router.use('/view', viewRouter);
+
+// policy
+router.get('/policy', (req, res, next) => {
+	res.render('policy');
+});
 
 // create a new record
 router.use('/c', createRouter);

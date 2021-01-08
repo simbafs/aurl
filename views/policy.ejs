@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>URL Shortener</title>
+    <meta name="theme-color" content="rgb(143,255,248)">
+    <meta name="author" content="simba-fs">
+    <meta property="og:type" content="website">
+    <meta name="twitter:description" content="Url Shortener made by simba-fs
+">
+    <meta name="twitter:image" content="/assets/img/icon-1024.png">
+    <meta name="description" content="A new url shortener,
+made by simba-fs,
+official website https://url.ckcsc.net">
+    <meta property="og:image" content="/assets/img/icon-1024.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Url Shortener">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+<% if(locals.GAid){ %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GAid%>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= GAid%>');
+  </script>
+<% } %>
+</head>
+
+<body class="d-flex flex-column justify-content-center align-items-center" style="width: 100vw;height: 100vh;">
+    <!-- Start: nav -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
+        <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/view">View</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/policy">Policy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/simba-fs/aurl" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: nav -->
+    <div class="container" id="policy" style="padding-right: 50px;padding-left: 50px;color: var(--dark);text-align: left;margin-top: 100px;">
+        <!-- Start: title -->
+        <div class="col text-center">
+            <h1><%= appName %> - 使用者條款</h1>
+        </div><!-- End: title -->
+        <!-- Start: intro -->
+        <div class="col">
+            <p>非常歡迎您光臨「<%= appName %>」（以下簡稱<strong>本網站</strong>），為了讓您能夠安心使用本網站的各項服務與資訊，特此向您說明本網站的隱私權保護政策，以保障您的權益，請您詳閱下列內容：</p>
+        </div><!-- End: intro -->
+        <!-- Start: main -->
+        <div class="col">
+            <h2>一、隱私權保護政策的適用範圍 </h2>
+            <p>隱私權保護政策內容，包括本網站如何處理在您使用網站服務時收集到的個人識別資料。隱私權保護政策不適用於本網站以外的相關連結網站，亦如另行登錄 <br>Line、Facebook、GitHub、BitBucket，或 Instagram <br>平台後的互動，依個別平台與使用者另訂的隱私條款，本網站的隱私政策也不適用於非本網站所委託或參與管理的人員。</p>
+            <h2>二、Cookie、個人資料的蒐集、處理及利用方式 </h2>
+            <ul>
+                <li>當您造訪本網站或使用本網站所提供之功能服務時，我們將視該服務功能性質，請您提供必要的個人資料，並在該特定目的範圍內處理及利用您的個人資料；非經您書面同意，本網站不會將個人資料用於其他用途。</li>
+                <li>當您造訪網站並同意網站使用條款後，於一般瀏覽時，若您未於網路環境自設資訊屏蔽機制，本網站伺服器會自行記錄相關行徑，包括您使用連線設備的 IP 位址、瀏覽器類型、瀏覽器語言、使用時間、瀏覽及點選資料記錄，以及一或多個能夠正確識別您瀏覽器的 Cookie。</li>
+                <li>本網站在您使用服務信箱、問卷調查等互動性功能時，會保留您所提供的姓名、電子郵件地址、聯絡方式及使用時間等。</li>
+                <li>為了提供您最佳的服務，本網站會在您的電腦中放置並取用暫存性的 Cookie，廣告 Cookie <br>用於行銷目的，提供行為／目標廣告的數據追蹤，網站能更精確地符合使用者的需求。透過標記收集的資訊可能會連結至使用者行為，但是無法辨識您的身分。這些紀錄資料將以匿名方式處理，在完全妥善去識別化處理的前提下，做為我們增進網站服務、維持系統安全性的參考依據。</li>
+                <li>於一般瀏覽時，伺服器會自行記錄相關行徑，包括您使用連線設備的 IP 位址、使用時間、使用的瀏覽器、瀏覽及點選資料記錄等，做為我們增進網站服務的參考依據，此記錄為內部應用，絕不對外公佈。</li>
+                <li>若您不願接受 Cookie 的寫入，您可在您使用的瀏覽器功能項中設定隱私權等級為高，即可拒絕 Cookie 的寫入，但可能會導至網站某些功能無法正常執行；或您亦可開啟瀏覽器之隱私模式，以中斷該等資訊被獲取之權限。</li>
+            </ul>
+            <h2>三、資料之保護 </h2>
+            <ul>
+                <li>本網站主機均應設防火牆、防毒系統等相關的各項資訊安全設備及必要的安全防護措施，加以保護網站及您的個人資料採用嚴格的保護措施，只由經過授權的人員才能接觸您的個人資料，相關處理人員皆應簽有保密合約，如有違反保密義務者，將會受到相關的法律處分。</li>
+                <li>如因業務需要有必要委託其他單位提供服務時，本網站亦會嚴格要求其遵守保密義務，並且採取必要檢查程序以確定其將確實遵守。</li>
+            </ul>
+            <h2>四、網站對外的相關連結 </h2>
+            <p>本網站的網頁提供其他網站的網路連結，例如 Line、Facebook、GitHub、BitBucket，或 Instagram 等外部平台，您也可經由本網站所提供的連結，點選進入其他網站。但該連結網站不適用本網站的隱私權保護政策，您必須參考該連結網站個別訂立的隱私權保護政策。</p>
+            <h2>五、與第三人共用個人資料之政策 </h2>
+            <p>本網站絕不會提供、交換、出租或出售任何您的個人資料給其他個人、團體、私人企業或公務機關，但有法律依據或合約義務者，不在此限。<br><br>前項但書之情形包括不限於：<br></p>
+            <ul>
+                <li>經由您書面同意。</li>
+                <li>法律明文規定。</li>
+                <li>為免除您生命、身體、自由或財產上之危險。</li>
+                <li>與公務機關或學術研究機構合作，基於公共利益為統計或學術研究而有必要，且資料經過提供者處理或蒐集著依其揭露方式無從識別特定之當事人。</li>
+                <li>當您在網站的行為，違反服務條款或可能損害或妨礙網站與其他使用者權益或導致任何人遭受損害時，經網站管理單位研析揭露您的個人資料是為了辨識、聯絡或採取法律行動所必要者。</li>
+                <li>有利於您的權益。</li>
+                <li>本網站委託廠商協助蒐集、處理或利用您的個人資料時，將對委外廠商或個人善盡監督管理之責。</li>
+            </ul>
+            <h2>六、短網址服務之使用</h2>
+            <ul>
+                <li>您可以在合理使用範圍內自由新增短網址。</li>
+                <li>為保護您及其他使用者的權益，您的短網址若是包含、導向、相關任何色情、賭博、犯罪、誘導他人犯罪或其他違反中華民國法律之事項，經由使用者檢舉或是管理員發現，經確認後，將由管理員刪除，不另外通知。</li>
+                <li>若是您發現有不當短網址，請通知管理員處理，若是確定違反使用者條款，將再通知您。</li>
+            </ul>
+            <h2>七、隱私權保護政策之修正 </h2>
+            <p>本網站隱私權保護政策將因應需求隨時進行修正，修正後的條款將更新於網站上。如無重大修正，恕不另行通知。</p>
+        </div><!-- End: main -->
+    </div><!-- Start: footer -->
+    <footer class="text-center" style="background-color: rgba(89,141,184,0);">
+        <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
+            <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
+        </div>
+        <div class="text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="margin-top: 20px;"><a class="github-button" href="https://github.com/simba-fs" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Follow @simba-fs on GitHub">Follow @simba-fs</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+            <div style="width: 10px;"></div><a class="github-button" href="https://github.com/simba-fs/aurl" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star simba-fs/aurl on GitHub">Star</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+        </div>
+        <h5 style="margin-top: 20px;"> <a href="https://github.com/simba-fs" target="_blank">simba-fs</a> © 2019-2021</h5><script>
+
+</script>
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="darkSwitch_1">
+  <label class="custom-control-label" for="darkSwitch_1">Dark Mode</label>
+</div>
+<style>
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #eee !important;
+}    
+</style>
+    </footer><!-- End: footer -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://hcaptcha.com/1/api.js/?hl=zh-TW"></script>
+    <script src="/assets/js/script.min.js"></script>
+</body>
+
+</html>

@@ -7,6 +7,16 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
 
+// connect to DB
+const mongoose = require('mongoose');
+mongoose.connect(config.get('DB'), {
+	useNewUrlParser: true,
+	useUnifiedTopology: true
+	}, (err, db) => {
+		if(err) return console.error(err);
+		console.log('DB connect');
+	});
+
 const app = express();
 
 // view engine setup
