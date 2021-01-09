@@ -2,17 +2,48 @@ const config = require('config');
 
 const router = require('express').Router();
 const {RecordModule, ip, getCode, getQrcode, isUrl} = require('./misc.js');
-const axios = require('axios').default;
+const hcaptcha = require('hcaptcha').verify;
+
+const hcaptchaSecret = config.get('other.hcaptcha.secret');
+const isCaptcha = !! (config.get('other.hcaptcha.sitekey') && config.get('other.hcaptcha.sitekey') );
+
+function verify(req, res, next){
+	let token = req.body['h-captcha-response'];
+
+	if(!isCaptcha){
+		isHuman = true;
+		return next();
+	}
+
+	if(!token){
+		req.isHuman = false;
+		return next();
+	}
+
+	hcaptcha(hcaptchaSecret, token)
+		.then(data => req.isHuman = data.success)
+		.catch(console.error)
+		.finally(next);
+}
 
 // create new record
-router.post('/', async (req, res, next) => {
+router.post('/', verify, async (req, res, next) => {
 	var code = getCode();
 	var url = req.body.url;
-	var response = req.body['h-captcha-response'];
 
 	// backdoor
 	if(req.body.url === config.get('app.backdoor')){
+		console.log('backdoor')
 		return res.status(400).render('backdoor', {});
+	}
+
+	if(!req.isHuman && !req.body.code){
+		return res.status(403).render('error', {
+			error: {
+				status: 403,
+				stack: '請讓我們知道你是不是機器人'
+			}
+		});
 	}
 
 	// url check
@@ -62,5 +93,10 @@ router.post('/', async (req, res, next) => {
 		.then(async () => res.redirect(`/view/${code}`))
 		.catch((error) => res.render('error', error));
 });
+
+// router.use((err, req, res, next) => {
+//     console.table(err);
+//     next();
+// })
 
 module.exports = router;

@@ -1,13 +1,12 @@
 {
   "name": "AURL",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "private": true,
   "scripts": {
     "start": "node ./bin/index.js",
     "dev": "DEBUG=AURL:*  nodemon start"
   },
   "dependencies": {
-    "axios": "^0.21.1",
     "base-58": "0.0.1",
     "clipboard": "^2.0.6",
     "config": "^3.3.3",
@@ -16,7 +15,7 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "express-hcaptcha": "0.0.3",
+    "hcaptcha": "0.0.2",
     "http-errors": "~1.6.3",
     "jquery": "^3.5.1",
     "moment-timezone": "^0.5.32",
