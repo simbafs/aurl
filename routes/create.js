@@ -6,12 +6,13 @@ const hcaptcha = require('hcaptcha').verify;
 
 const hcaptchaSecret = config.get('other.hcaptcha.secret');
 const isCaptcha = !! (config.get('other.hcaptcha.sitekey') && config.get('other.hcaptcha.sitekey') );
+console.log({isCaptcha});
 
 function verify(req, res, next){
 	let token = req.body['h-captcha-response'];
 
 	if(!isCaptcha){
-		isHuman = true;
+		req.isHuman = true;
 		return next();
 	}
 
