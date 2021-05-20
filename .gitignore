@@ -64,3 +64,6 @@ typings/
 tags
 data/
 config/local*
+
+# for v2
+api
