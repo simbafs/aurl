@@ -5,8 +5,6 @@
 
 # AURL
 URL shortener written in Node.js  
-[Demo (https://aurl.simba-fs.dev)](https://aurl.simba-fs.dev)
-
 
 # API endpoint
 | api              | required permission                | description                                                  |
