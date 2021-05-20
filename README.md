@@ -3,6 +3,8 @@
 	<h1>AURL</h1>
 </div>
 
+> I am developing [version 2](https://github.com/simba-fs/aurl/tree/v2). You can join me through PR.
+
 # AURL
 URL shortener written in Node.js  
 [Demo (https://aurl.simba-fs.dev)](https://aurl.simba-fs.dev)
