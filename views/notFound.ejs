@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>URL Shortener</title>
+    <meta name="theme-color" content="rgb(143,255,248)">
+    <meta name="author" content="simba-fs">
+    <meta property="og:type" content="website">
+    <meta name="twitter:description" content="Url Shortener made by simba-fs
+">
+    <meta name="twitter:image" content="/assets/img/icon-1024.png">
+    <meta name="description" content="A new url shortener,
+made by simba-fs,
+official website https://url.ckcsc.net">
+    <meta property="og:image" content="/assets/img/icon-1024.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Url Shortener">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/icon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.min.css">
+<% if(locals.GAid){ %>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= GAid%>"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', '<%= GAid%>');
+  </script>
+<% } %>
+</head>
+
+<body class="d-flex d-lg-flex flex-column justify-content-center align-items-center justify-content-lg-center align-items-lg-center" style="height: 100vh;">
+    <!-- Start: nav -->
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean-search fixed-top" style="background-color: rgb(103,179,221);width: 100vw;">
+        <div class="container"><a class="navbar-brand" href="/"><%= appName %></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/view">View</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/policy">Policy</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://github.com/simba-fs/aurl" target="_blank">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav><!-- End: nav -->
+    <div class="container text-center" style="padding: 20px;">
+        <div class="card" style="background-color: rgba(0,0,0,0.1);">
+            <div class="card-body">
+                <h4 class="card-title"><%= title %></h4>
+                <h6 class="text-muted card-subtitle mb-2"><%= subtitle %></h6>
+                <p class="card-text">找不到短網址 <%= baseUrl + '/' + code %>，可能是你少打幾個字</p>
+            </div>
+        </div>
+    </div><!-- Start: footer -->
+    <footer class="text-center" style="background-color: rgba(89,141,184,0);">
+        <div class="d-lg-flex justify-content-lg-center align-items-lg-center" style="margin-top: 20px;">
+            <p>為了避免資源的浪費，我們會紀錄你的 IP ：<%= ip %></p>
+        </div>
+        <div class="text-center d-flex d-md-flex justify-content-center align-items-center justify-content-md-center align-items-md-center" style="margin-top: 20px;"><a class="github-button" href="https://github.com/simba-fs" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-size="large" data-show-count="true" aria-label="Follow @simba-fs on GitHub">Follow @simba-fs</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+            <div style="width: 10px;"></div><a class="github-button" href="https://github.com/simba-fs/aurl" data-color-scheme="no-preference: dark; light: dark; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star simba-fs/aurl on GitHub">Star</a>
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+        </div>
+        <h5 style="margin-top: 20px;"> <a href="https://github.com/simba-fs" target="_blank">simba-fs</a> © 2019-2021</h5><script>
+
+</script>
+<div class="custom-control custom-switch">
+  <input type="checkbox" class="custom-control-input" id="darkSwitch_1">
+  <label class="custom-control-label" for="darkSwitch_1">Dark Mode</label>
+</div>
+<style>
+[data-theme="dark"] {
+  background-color: #111 !important;
+  color: #eee;
+}
+
+[data-theme="dark"] .bg-light {
+  background-color: #333 !important;
+}
+
+[data-theme="dark"] .bg-white {
+  background-color: #000 !important;
+}
+
+[data-theme="dark"] .bg-black {
+  background-color: #eee !important;
+}    
+</style>
+    </footer><!-- End: footer -->
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://hcaptcha.com/1/api.js/?hl=zh-TW"></script>
+    <script src="/assets/js/script.min.js"></script>
+</body>
+
+</html>

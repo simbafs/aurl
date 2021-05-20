@@ -1,0 +1,20 @@
+{
+	"DB": "mongodb://127.0.0.1:27017",
+	"PORT": 3000,
+	"app": {
+		"BASEURL": "http://localhost:3000",
+		"email": "support@localhost",
+		"appName": "AURL",
+		"title": "URL shortenrt",
+		"subtitle": "Powered by AURL",
+		"backdoor": "backdoor",
+		"admin": "admin"
+	},
+	"other":{
+		"hcaptcha": {
+			"sitekey": "",
+			"secret": ""
+		},
+		"GAid": ""
+	}
+}
