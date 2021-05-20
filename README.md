@@ -7,49 +7,24 @@
 URL shortener written in Node.js  
 [Demo (https://aurl.simba-fs.dev)](https://aurl.simba-fs.dev)
 
-## Start with Docker
-see [https://github.com/simba-fs/aurl-docker-deploy](https://github.com/simba-fs/aurl-docker-deploy)
 
-## Installation
-### Download the project.
-- With git
-	```BASH
-	git clone --depth 1 https://github.com/simba-fs/aurl.git
-	cd aurl
-	npm i 
-	```
-- Without git
-	```BASH
-	wget https://github.com/simba-fs/aurl/archive/master.zip
-	unzip master.sip
-	cd aurl
-	npm i 
-	```
+# API endpoint
+| api              | required permission                | description                                                  |
+| :---             | :---                               | :---                                                         |
+| POST /url        | manager:custonCode(optional)       | create a record for ${body.url} with ${body.code}            |
+| GET /url/:code   | manager:getRecord(optional)        | get record information of ${params.code}                     |
+| PUT /url/:code   | owner or manager:editRecord        | edit record information                                      |
+| DELET /url/:code | owner or mamager:deleteRecord      | delete record                                                |
+| POST /user       | one-time token or admin:createUser | create user with specified permissions in ${body.permission} |
+| GET /user        | (manager or admin):getUserInfo     | get all users info                                           |
+| GET /user/:id    | (manager or admin):getuserInfo     | get specified users info                                     |
+| PUT /user/:id    | (manager or admin):editUserInfo    | edit users info                                              |
+| DELETE /user/:id | one-time token or admin:deleteUser | delete user                                                  |
 
-### config file
-AURL has a preset config (`config/default.json`), the only thing you need to do is starting a localhost mongodb server (port 27017). To customize your own config, edit your own `config/local.json`. Examp	le is placed in `config/default.json`.
-
-### Google Analytics
-GA is available in AURL. To enable it, modify `other.GAid` in `config/local.json`.
-
-### hCaptcah
-You can enable hCaptcha by editing `other.hcaptcha` in `config.local.json`. Once enabled, a captcha section will insert in the index page below URL input.
-
-### Start the server
-```bash
-npm start
-```
-
-## API v1
-| method | path    | params |
-| ------ | ------- | ------ |
-| GET    | /code   | code   |
-| GET    | /url    | url    |
-| POST   | /create | url    |
-
-## TODO
-- Browser addons
-- Improve log
-- ~~Click to copy (finish)~~
-- ~~add ip record (finish)~~
-
+# role
+| role    | description                                                                         |
+| :---    | :---                                                                                |
+| guest   | unsign-ined user, only can create records, which will be marked as 'unsafe'         |
+| user    | regular user, with the basic permission to create, edit and delete their own record |
+| manager | managing records                                                                    |
+| admin   | managing records and users, including permission                                    |
