@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="./public/assets/img/icon-1024.png" alt="AURL" width=100>
+	<img src="./icon.png" alt="AURL" width=200>
 	<h1>AURL</h1>
 </div>
 
@@ -12,9 +12,9 @@ URL shortener written in Node.js
 | api              | required permission                | description                                                  |
 | :---             | :---                               | :---                                                         |
 | POST /url        | manager:custonCode(optional)       | create a record for ${body.url} with ${body.code}            |
-| GET /url/:code   | manager:getUrl(optional)        | get record information of ${params.code}                     |
-| PUT /url/:code   | owner or manager:editUrl        | edit record information                                      |
-| DELET /url/:code | owner or mamager:deleteUrl      | delete record                                                |
+| GET /url/:code   | manager:getUrl(optional)           | get record information of ${params.code}                     |
+| PUT /url/:code   | owner or manager:editUrl           | edit record information                                      |
+| DELET /url/:code | owner or mamager:deleteUrl         | delete record                                                |
 | POST /user       | one-time token or admin:createUser | create user with specified permissions in ${body.permission} |
 | GET /user        | (manager or admin):getUserInfo     | get all users info                                           |
 | GET /user/:id    | (manager or admin):getuserInfo     | get specified users info                                     |
