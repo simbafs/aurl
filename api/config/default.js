@@ -5,5 +5,8 @@ module.exports = {
 		email: 'admin@aurl.simba-fs.dev',
 		password: 'aurl'
 	},
-	saltRound: 10
+	saltRound: 10,
+	app: {
+		baseUrl: 'http://localhost:3000'
+	}
 }

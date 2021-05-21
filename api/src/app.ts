@@ -9,11 +9,16 @@ import logger from'morgan';
 import helmet from'helmet';
 import cors from'cors';
 
+// import index route
+import index from './routes/index';
+
+// setup database
 import mongoose from 'mongoose';
 mongoose.connect(config.get('DB'), {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
-	useCreateIndex: true
+	useCreateIndex: true,
+	useFindAndModify: false
 }, (err) => {
 	if(err) return console.error(err);
 	debug('DB connect');
@@ -30,7 +35,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', require('./routes/index'));
+app.use('/', index);
 
 app.listen(config.get('port'), () => debug(`listen on ${config.get('port')}`));
 

@@ -1,17 +1,24 @@
-import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
+import { Schema, model, Document } from 'mongoose';
 
 import Debug from 'debug';
 const debug = Debug('api:schema/mongoModel');
 
 import bcrypt from 'bcrypt';
 import config from 'config';
+import { v4 as uuid } from 'uuid';
 
 const requiredString = {
 	type: String,
 	required: true
 };
 const ref = (ref:string) => ({ type: Schema.Types.ObjectId, ref: ref });
+
+interface IUrl {
+	url: string,
+	code: string,
+	owner: typeof Schema.Types.ObjectId,
+	click: number
+}
 
 const UrlSchema = new Schema({
 	url: requiredString,
@@ -24,33 +31,47 @@ const UrlSchema = new Schema({
 });
 
 interface IUser {
-	id: number,
 	email: string,
 	username: string,
 	password: string,
-	permission: string[]
+	permission: string[],
+	verifyCode: string,
+	verified: boolean
 }
 
 const UserSchema = new Schema({
-	id: {
-		type: Number,
-		require: true,
-		unique: true
-	},
 	email: requiredString,
 	username: requiredString,
 	password: requiredString,
-	permission: [ String ]
+	permission: {
+		type: [String],
+		default: [ 'user' ]
+	},
+	verifyCode: {
+		type: String,
+		default: uuid
+	},
+	verified: {
+		type: Boolean,
+		default: false
+	}
 });
 
 UserSchema.pre<IUser>('save', function(next){
 	let self = this;
 	bcrypt.hash(self.password, config.get('saltRound'))
-	.then(password => { 
+	.then(password => {
 		this.password = password;
 		next();
 	});
 });
+
+interface ILog {
+	type: string,
+	message: string,
+	data: string,
+	date: typeof Date
+}
 
 const LogSchema = new Schema({
 	type: requiredString,
@@ -62,6 +83,6 @@ const LogSchema = new Schema({
 	}
 });
 
-export const UrlModel = mongoose.model('Url', UrlSchema);
-export const UserModel = mongoose.model('User', UserSchema);
-export const LogModel = mongoose.model('Click', LogSchema);
+export const UrlModel = model<IUrl & Document>('Url', UrlSchema);
+export const UserModel = model<IUser>('User', UserSchema);
+export const LogModel = model<ILog & Document>('Click', LogSchema);

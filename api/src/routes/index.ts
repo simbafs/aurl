@@ -1,8 +1,11 @@
+import Debug from 'debug';
+const debug = Debug('api:routes/index');
+
 import express from 'express';
 const router = express.Router();
 
-const user = require('./user');
-const url = require('./url');
+import user from './user';
+import url from './url';
 
 router.get('/', (req, res, next) => {
 	res.json('hello world');
@@ -11,4 +14,4 @@ router.get('/', (req, res, next) => {
 router.use('/user', user);
 router.use('/url', url);
 
-module.exports = router;
+export default router;
