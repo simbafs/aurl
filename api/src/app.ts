@@ -12,11 +12,13 @@ import cors from'cors';
 import mongoose from 'mongoose';
 mongoose.connect(config.get('DB'), {
 	useNewUrlParser: true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
+	useCreateIndex: true
 }, (err) => {
 	if(err) return console.error(err);
 	debug('DB connect');
 });
+import './schema/initDB';
 
 const app = express();
 
@@ -30,6 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', require('./routes/index'));
 
-app.listen(config.get('port'));
+app.listen(config.get('port'), () => debug(`listen on ${config.get('port')}`));
 
 module.exports = app;

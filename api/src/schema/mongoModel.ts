@@ -1,5 +1,11 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
+
+import Debug from 'debug';
+const debug = Debug('api:schema/mongoModel');
+
+import bcrypt from 'bcrypt';
+import config from 'config';
 
 const requiredString = {
 	type: String,
@@ -9,16 +15,21 @@ const ref = (ref:string) => ({ type: Schema.Types.ObjectId, ref: ref });
 
 const UrlSchema = new Schema({
 	url: requiredString,
-	code: {
-		...requiredString,
-		unique: true
-	},
+	code: requiredString,
 	owner: ref('User'),
 	click: {
 		type: Number,
 		default: 0
 	}
 });
+
+interface IUser {
+	id: number,
+	email: string,
+	username: string,
+	password: string,
+	permission: string[]
+}
 
 const UserSchema = new Schema({
 	id: {
@@ -28,7 +39,17 @@ const UserSchema = new Schema({
 	},
 	email: requiredString,
 	username: requiredString,
+	password: requiredString,
 	permission: [ String ]
+});
+
+UserSchema.pre<IUser>('save', function(next){
+	let self = this;
+	bcrypt.hash(self.password, config.get('saltRound'))
+	.then(password => { 
+		this.password = password;
+		next();
+	});
 });
 
 const LogSchema = new Schema({
