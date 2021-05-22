@@ -6,12 +6,11 @@ const debug = Debug('api:schema/initDB');
 debug(UserModel);
 
 // create root
-UserModel.findOne({ id: 0 })
+UserModel.findOne({ username: 'root' })
 .then((data: unknown) => {
 	if(!data) {
 		debug('create user root');
 		UserModel.create({
-			id: 0,
 			email: config.get('admin.email'),
 			username: 'root',
 			password: config.get('admin.password'),
@@ -21,12 +20,11 @@ UserModel.findOne({ id: 0 })
 })
 
 // create guest
-UserModel.findOne({ id: 1 })
+UserModel.findOne({ username: 'guest' })
 .then((data: unknown) => {
 	if(!data) {
 		debug('create user guest');
 		UserModel.create({
-			id: 1,
 			email: 'none',
 			username: 'guest',
 			password: 'guest',

@@ -61,3 +61,6 @@ typings/
 .next
 
 *.swp
+
+local.js
+local.json

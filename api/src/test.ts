@@ -1,11 +1,27 @@
+import Debug from 'debug';
+const debug = Debug('api:test');
+
+import config from 'config';
 import mongoose from 'mongoose';
-mongoose.connect('mongodb://127.0.0.1:27017', {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useCreateIndex: true
-}, (err) => {
-	if(err) return console.error(err);
-});
 
-import { UserModel } from './src/schema/mongoModel';
+import { UserModel } from './schema/mongoModel';
+(async () => {
+	mongoose.connect('mongodb://127.0.0.1:27017', {
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useCreateIndex: true,
+		useFindAndModify: false
+	}, (err) => {
+		if(err) return console.error(err);
+	});
 
+	debug(await UserModel.findOneAndUpdate({ username: 'simbasdfa' }, { verified: false }));
+
+
+	// import render from './lib/sendEmail';
+	// render({
+	//     username: 'simba',
+	//     email: 'simba.fs@gmail.com',
+	//     verifyUrl: 'http://localhost:3000/user/signup/verify/23819-21312-3123-123'
+	// });
+})()
