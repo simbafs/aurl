@@ -17,7 +17,7 @@ UserModel.findOne({ username: 'root' })
 			permission: [ 'admin' ]
 		})
 	}
-})
+}, debug);
 
 // create guest
 UserModel.findOne({ username: 'guest' })
@@ -31,4 +31,4 @@ UserModel.findOne({ username: 'guest' })
 			permission: [  ]
 		})
 	}
-})
+}, debug);

@@ -19,11 +19,6 @@ import trimEmail from '../../lib/trimEmail';
 //     next();
 // });
 
-function t(msg:any){
-	debug(msg);
-	return true;
-}
-
 router.post('/', async (req, res, next) => {
 	let error = errorMsg(res);
 	let { email, username, password } = req.body;
@@ -60,7 +55,7 @@ router.post('/', async (req, res, next) => {
 	debug({ username, email, password });
 	let user = await UserModel.create({ username, email, password });
 
-	let verifyUrl = urlJoin(config.get('app.baseUrl'), 'user/signup/verify', user.verifyCode);
+	let verifyUrl = urlJoin(config.get('baseUrl'), 'user/signup/verify', user.verifyCode);
 
 	let info = await sendEmail({ username, email, verifyUrl });
 	return res.json(info);

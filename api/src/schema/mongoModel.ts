@@ -1,4 +1,4 @@
-import { Schema, model, Document } from 'mongoose';
+import { Schema, model, Document, Model } from 'mongoose';
 
 import Debug from 'debug';
 const debug = Debug('api:schema/mongoModel');
@@ -20,7 +20,7 @@ interface IUrl {
 	click: number
 }
 
-const UrlSchema = new Schema({
+const UrlSchema = new Schema<IUrl>({
 	url: requiredString,
 	code: requiredString,
 	owner: ref('User'),
@@ -39,7 +39,7 @@ interface IUser {
 	verified: boolean
 }
 
-const UserSchema = new Schema({
+const UserSchema = new Schema<IUser>({
 	email: requiredString,
 	username: requiredString,
 	password: requiredString,
@@ -57,7 +57,7 @@ const UserSchema = new Schema({
 	}
 });
 
-UserSchema.pre<IUser>('save', function(next){
+UserSchema.pre('save', function(next){
 	let self = this;
 	bcrypt.hash(self.password, config.get('saltRound'))
 	.then(password => {
@@ -66,6 +66,11 @@ UserSchema.pre<IUser>('save', function(next){
 	});
 });
 
+UserSchema.methods.checkPassword = async function(password) {
+	const user = this;
+	return await bcrypt.compare(password, user.password);
+}
+
 interface ILog {
 	type: string,
 	message: string,
@@ -73,7 +78,7 @@ interface ILog {
 	date: typeof Date
 }
 
-const LogSchema = new Schema({
+const LogSchema = new Schema<ILog>({
 	type: requiredString,
 	message: requiredString,
 	data: String,
@@ -83,6 +88,6 @@ const LogSchema = new Schema({
 	}
 });
 
-export const UrlModel = model<IUrl & Document>('Url', UrlSchema);
-export const UserModel = model<IUser>('User', UserSchema);
-export const LogModel = model<ILog & Document>('Click', LogSchema);
+export const UrlModel = model('Url', UrlSchema);
+export const UserModel = model('User', UserSchema);
+export const LogModel = model('Click', LogSchema);
