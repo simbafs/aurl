@@ -1,4 +1,3 @@
-import { Schema, model, Document, Model } from 'mongoose';
 
 import Debug from 'debug';
 const debug = Debug('api:schema/mongoModel');
@@ -6,19 +5,14 @@ const debug = Debug('api:schema/mongoModel');
 import bcrypt from 'bcrypt';
 import config from 'config';
 import { v4 as uuid } from 'uuid';
+import { Schema, model, Document, Model } from 'mongoose';
+import { IUrl, IUser, ILog } from '../types/custom.d';
 
 const requiredString = {
 	type: String,
 	required: true
 };
 const ref = (ref:string) => ({ type: Schema.Types.ObjectId, ref: ref });
-
-interface IUrl {
-	url: string,
-	code: string,
-	owner: typeof Schema.Types.ObjectId,
-	click: number
-}
 
 const UrlSchema = new Schema<IUrl>({
 	url: requiredString,
@@ -29,15 +23,6 @@ const UrlSchema = new Schema<IUrl>({
 		default: 0
 	}
 });
-
-interface IUser {
-	email: string,
-	username: string,
-	password: string,
-	permission: string[],
-	verifyCode: string,
-	verified: boolean
-}
 
 const UserSchema = new Schema<IUser>({
 	email: requiredString,
@@ -71,12 +56,6 @@ UserSchema.methods.checkPassword = async function(password) {
 	return await bcrypt.compare(password, user.password);
 }
 
-interface ILog {
-	type: string,
-	message: string,
-	data: string,
-	date: typeof Date
-}
 
 const LogSchema = new Schema<ILog>({
 	type: requiredString,

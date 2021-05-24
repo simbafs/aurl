@@ -8,7 +8,7 @@ const router = express.Router();
 
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
-import '../../lib/auth';
+import '../../lib/passport';
 
 router.post('/', async (req, res, next) => {
 	passport.authenticate('signin', async (err, user, info) => {

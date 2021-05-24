@@ -1,28 +1,50 @@
 import config from 'config';
+
 import Debug from 'debug';
 const debug = Debug('api:lib/auth');
 
 import passport from 'passport';
-import { Strategy as localStrategy } from 'passport-local';
-import { UserModel } from '../schema/mongoModel';
+import { Request, Response, NextFunction } from 'express';
+import { isContain, typeOfElement } from '../lib/util';
 
-passport.use('signin', new localStrategy({
-	usernameField: 'id',
-	passwordField: 'password'
-},
-async (id, password, done) => {
-	try {
-		const user = await UserModel.findOne({ $or: [{ email: id }, { username: id }] });
+export const auth = () => passport.authenticate('jwt', { session: false });
 
-		if (!user) return done(null, false, { message: 'User not found' });
+export const check = (permission?: string[] | string[][]) => 
+	(req: Request, res: Response, next: NextFunction) => {
 
-		const validate = await user.checkPassword(password);
+		if(permission){
+			if(!req.user) return res.status(400).json('please login');
+			const userPermission = req.user.permission;
+			debug({
+				requiredPermission: permission,
+				userPermission: userPermission
+			});
 
-		if (!validate) return done(null, false, { message: 'Wrong Password' });
+			let types = typeOfElement(permission);
+			debug({ types });
+			// string[][]
+			if(types.length === 1){
 
-		return done(null, user, { message: 'Logged in Successfully' });
-	} catch (e) {
-		debug(e);
-		return done(e);
+				if(types[0] === 'array'){
+					let isDoubleStringArray = (permission as any[]).every(i => {
+						let types = typeOfElement(i);
+						return types.length === 1 && types[0] === 'string';
+					})
+					if(isDoubleStringArray){
+						debug('string[][]');
+						permission = permission as string[][];
+						if(permission.some(i => isContain(userPermission, i))) return next();
+					}
+				}else if(types[0] === 'string'){
+					debug('string[]');
+					permission = permission as string[];
+					if(isContain(userPermission, permission)) return next();
+				}
+			}
+		}
+
+		return res.status(403).json('permission denied');
 	}
-}));
+
+
+

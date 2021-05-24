@@ -1,7 +1,7 @@
 import Debug from 'debug';
 const debug = Debug('api:routes/index');
 
-import express from 'express';
+import express, { ErrorRequestHandler, Request, Response, NextFunction } from 'express';
 const router = express.Router();
 
 import user from './user';
