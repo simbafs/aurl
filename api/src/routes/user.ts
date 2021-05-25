@@ -19,11 +19,11 @@ router.use('/signup', signup);
 
 router.use(auth());
 
-router.get('/test', check(), (req, res, next) => {
+router.get('/test', (req, res, next) => {
 	return res.json(req.user);
 });
 
-router.get('/test2', check(['getUserasdf', 'customCode']), (req, res, next) => {
+router.get('/test2', check(['customCode', 'getUrl']), (req, res, next) => {
 	return res.json(req.user);
 })
 

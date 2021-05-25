@@ -1,4 +1,3 @@
-
 import Debug from 'debug';
 const debug = Debug('api:schema/mongoModel');
 
@@ -6,7 +5,10 @@ import bcrypt from 'bcrypt';
 import config from 'config';
 import { v4 as uuid } from 'uuid';
 import { Schema, model, Document, Model } from 'mongoose';
-import { IUrl, IUser, ILog } from '../types/custom.d';
+import { IUrl, IUser, ILog, ICode } from '../types/custom.d';
+import { randomCode } from '../lib/code';
+
+let saltRound = config.get('saltRound') as number;
 
 const requiredString = {
 	type: String,
@@ -21,8 +23,18 @@ const UrlSchema = new Schema<IUrl>({
 	click: {
 		type: Number,
 		default: 0
-	}
+	},
+	state: {
+		type: String,
+		default: 'unsafe'
+	},
+	secret: String
 });
+
+UrlSchema.pre('save', async function(){
+	if(!this.secert) bcrypt.hash(await randomCode(), saltRound)
+		.then(secret => this.secret = secret);
+})
 
 const UserSchema = new Schema<IUser>({
 	email: requiredString,
@@ -44,7 +56,7 @@ const UserSchema = new Schema<IUser>({
 
 UserSchema.pre('save', function(next){
 	let self = this;
-	bcrypt.hash(self.password, config.get('saltRound'))
+	bcrypt.hash(self.password, saltRound)
 	.then(password => {
 		this.password = password;
 		next();
@@ -67,6 +79,13 @@ const LogSchema = new Schema<ILog>({
 	}
 });
 
+// store all codes
+const CodeSchema = new Schema<ICode>({
+	scope: requiredString,
+	code: [String]
+})
+
 export const UrlModel = model('Url', UrlSchema);
 export const UserModel = model('User', UserSchema);
 export const LogModel = model('Click', LogSchema);
+export const CodeModel = model('Code', CodeSchema);

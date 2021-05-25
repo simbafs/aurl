@@ -1,4 +1,4 @@
-import { UserModel } from './mongoModel';
+import { UserModel, CodeModel } from './mongoModel';
 import config from 'config';
 import Debug from 'debug';
 const debug = Debug('api:schema/initDB');
@@ -30,3 +30,15 @@ UserModel.findOne({ username: 'guest' })
 		})
 	}
 }, debug);
+
+// create default scope
+CodeModel.findOne({ scope: 'default' })
+.then((data: unknown) => {
+	if(!data) {
+		debug('create default scope');
+		CodeModel.create({
+			scope: 'default',
+			codes: []
+		});
+	}
+})

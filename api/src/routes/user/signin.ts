@@ -9,6 +9,7 @@ const router = express.Router();
 import jwt from 'jsonwebtoken';
 import passport from 'passport';
 import '../../lib/passport';
+import { pick } from '../../lib/user';
 
 router.post('/', async (req, res, next) => {
 	passport.authenticate('signin', async (err, user, info) => {
@@ -18,13 +19,8 @@ router.post('/', async (req, res, next) => {
 			req.login(user, { session: false  }, async (error) => {
 				if (error) return next(error);
 
-				const body = { 
-					username: user.username, 
-					permission: user.permission,
-					verified: user.verified
-				};
 				// TODO: seperate jwt.sign to another file
-				const token = jwt.sign({ user: body }, config.get('jwt.secret'));
+				const token = jwt.sign({ user: pick(user) }, config.get('jwt.secret'));
 
 				return res.json({ token });
 			});

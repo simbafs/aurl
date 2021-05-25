@@ -28,5 +28,12 @@ module.exports = {
 	},
 	jwt: {
 		secret: 'autljwtsecret'
+	},
+	blacklist: {
+		host: []
+	},
+	code: {
+		len: 4,
+		charset: '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'.split('')
 	}
 }
