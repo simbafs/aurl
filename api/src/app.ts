@@ -9,6 +9,7 @@ import logger from'morgan';
 import helmet from'helmet';
 import cors from'cors';
 import createError from 'http-errors';
+import insertToken from './lib/insertToken';
 
 // import index route
 import index from './routes/index';
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(insertToken('guest'));
 
 app.use('/', index);
 

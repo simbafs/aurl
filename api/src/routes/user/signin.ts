@@ -19,7 +19,7 @@ router.post('/', async (req, res, next) => {
 				if (error) return next(error);
 
 				const body = { 
-					email: user.email, 
+					username: user.username, 
 					permission: user.permission,
 					verified: user.verified
 				};

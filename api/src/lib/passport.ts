@@ -33,10 +33,12 @@ passport.use(new JWTstrategy({
 	jwtFromRequest: ExtractJwt.fromBodyField('token')
 },
 async (token, done) => {
+	debug({ token });
 	try {
 		return done(null, token.user);
 	} catch (error) {
-		done(error);
+		return done(null, {});
+		// done(error);
 	}
 }));
 

@@ -6,9 +6,15 @@ module.exports = {
 	port: 3000,
 	baseUrl: 'http://localhost:3000',
 	DB: 'mongodb://127.0.0.1:27017',
-	admin: {
+	root: {
 		email: 'admin@aurl.simba-fs.dev',
 		password: 'aurl'
+	},
+	guest: {
+		username: 'guest',
+		password: 'guest',	// this value does not matter. It is only used to satisfy the DB schema
+		email: 'none',		// this value does not matter, either
+		permission: []		// this value is important, it defines the default permissions for all user in this website
 	},
 	saltRound: 10,
 	mail: {
