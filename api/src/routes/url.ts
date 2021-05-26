@@ -13,11 +13,13 @@ import { randomCode } from '../lib/code';
 import { UrlModel } from '../schema/mongoModel';
 import mongoose from 'mongoose';
 
-router.get('/', auth(), (req, res, next) => {
+router.use(auth());
+
+router.get('/', (req, res, next) => {
 	res.json(req.user);
 });
 
-router.post('/', auth(), async (req, res, next) => {
+router.post('/', async (req, res, next) => {
 	let { url, code } = req.body;
 	let user = req.user;
 	let canCustomCode = user && user.permission.includes('customCode');
@@ -29,7 +31,7 @@ router.post('/', auth(), async (req, res, next) => {
 		disallow_auth: true,
 		host_blacklist: config.get('blacklist.host')
 	})) error.push('url format error');
-	
+
 	if(error.end()) return;
 
 	if(!canCustomCode || !code) code = await randomCode();
@@ -40,10 +42,40 @@ router.post('/', auth(), async (req, res, next) => {
 	return res.json(Url);
 });
 
+// return info, no redirect
 router.get('/:code', async (req, res, next) => {
-	let url = await UrlModel.findOne({ code: req.params.code });
+	let url = await UrlModel.findOneAndUpdate({ code: req.params.code }, {
+		$inc: { click: 1 }
+	}, { new: true });
+	if(!url) return res.status(400).json('not found');
 
-	return res.json(url);
+	let user = req.user;
+	let body = {
+		state: url.state,
+		url: url.url,
+		code: url.code,
+		click: 0,
+		owner: 0
+
+	}
+
+	// check permission(owner or getUrl)
+	if(user.permission.includes('getUrl') || user.id === url.owner){
+		body.click = url.click;
+		body.owner = url.owner;
+	}
+
+	return res.json(body);
+});
+
+// redirect 
+router.get('/r/:code', async (req, res, next) => {
+	let url = await UrlModel.findOneAndUpdate({ code: req.params.code }, {
+		$inc: { click: 1 }
+	}, { new: true });
+	if(!url) return res.status(400).json('not found');
+	
+	return res.redirect(url.url);
 });
 
 

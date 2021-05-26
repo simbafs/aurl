@@ -6,7 +6,7 @@ const debug = Debug('api:routes');
 import express from 'express';
 const router = express.Router();
 
-import jwt from 'jsonwebtoken';
+import sign from '../../lib/jwt';
 import passport from 'passport';
 import '../../lib/passport';
 import { pick } from '../../lib/user';
@@ -14,13 +14,12 @@ import { pick } from '../../lib/user';
 router.post('/', async (req, res, next) => {
 	passport.authenticate('signin', async (err, user, info) => {
 		try {
-			if (err || !user) return next(new Error('An error occurred.'));
+			if (err || !user) return res.status(500).json({ err, info });
 
 			req.login(user, { session: false  }, async (error) => {
-				if (error) return next(error);
+				if (error) return res.status(400).json(error);
 
-				// TODO: seperate jwt.sign to another file
-				const token = jwt.sign({ user: pick(user) }, config.get('jwt.secret'));
+				const token = sign({ user: pick(user) });
 
 				return res.json({ token });
 			});

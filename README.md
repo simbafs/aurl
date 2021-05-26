@@ -7,6 +7,8 @@
 URL shortener written in Node.js  
 
 # TODO: permission control
+# TODO: clean and unify error message
+
 # API endpoint
 | api                      | required permission  | description                                                  |
 | :---                     | :---                 | :---                                                         |
