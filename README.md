@@ -23,7 +23,7 @@ URL shortener written in Node.js
 | ⬜️       | PUT /url/code            | owner or editUrl     | edit record information                                      |
 | ⬜️       | DELET /url/code          | owner or deleteUrl   | delete record                                                |
 | ⬜️       | POST /user               | createUser           | create user with specified permissions in ${body.permission} |
-| ⬜️       | GET /user                | getUser              | get all users info                                           |
+| ✅       | GET /user                | getUser              | get all users info                                           |
 | ✅       | GET /user/id             | getUser              | get specified users info                                     |
 | ⬜️       | PUT /user/id             | editUser             | edit users info                                              |
 | ⬜️       | DELETE /user/id          | owner or deleteUser  | delete user                                                  |
@@ -39,7 +39,7 @@ URL shortener written in Node.js
 | ⬜️       | editUrl    | edit url                                                                   |
 | ⬜️       | deleteUrl  | deleteUrl                                                                  |
 | ⬜️       | createUrl  | createUrl without verify                                                   |
-| ⬜️       | getUser    | get user info, excluding password because password is hashed               |
+| ✅       | getUser    | get user info, excluding password because password is hashed               |
 | ⬜️       | editUser   | edit user info, including password                                         |
 | ⬜️       | deleteUser | deleteUser                                                                 |
 | 🟨       | owner      | this is a special permission that won't be mark in user's permission field |
@@ -51,3 +51,7 @@ URL shortener written in Node.js
 | user    | none        | all url create by unverified user will be mark as 'unverified' |
 | manager | editUrl     |                                                                |
 | admin   | all         |                                                                |
+
+# 參考資料
+https://docs.mongodb.com/manual/reference/operator/query/nin/  
+

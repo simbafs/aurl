@@ -35,5 +35,8 @@ module.exports = {
 	code: {
 		len: 4,
 		charset: '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz'.split('')
+	},
+	user: {
+		doNotShow: ['root', 'guest']
 	}
 }

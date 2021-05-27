@@ -1,3 +1,4 @@
+import config from 'config';
 import Debug from 'debug';
 const debug = Debug('api:routes/user');
 
@@ -8,28 +9,28 @@ import signin from './user/signin';
 import signup from './user/signup';
 import { auth, check } from '../lib/auth';
 import passport from 'passport';
-
-
-router.get('/', (req, res, next) => {
-	return res.json('user');
-});
+import { UserModel } from '../schema/mongoModel';
 
 router.use('/signin', signin);
 router.use('/signup', signup);
 
 router.use(auth());
 
-router.get('/test', (req, res, next) => {
-	return res.json(req.user);
+router.get('/', check([ 'getUser' ]), async (req, res, next) => {
+	let users = await UserModel.find({ username: { $nin: config.get('user.doNotShow') } });
+	
+	return res.json(users);
 });
 
-router.get('/test2', check(['customCode', 'getUrl']), (req, res, next) => {
-	return res.json(req.user);
-})
+router.get('/:username', check([ 'getUser' ]), async (req, res, next) => {
+	let doNotShow = config.get('user.doNotShow') as string[];
+	let { username } = req.params;
 
-router.get('/test3', check([ ['customCode'], ['getUrdfsl'] ]), (req, res, next) => {
-	return res.json(req.user);
-})
+	if(doNotShow.includes(username)) return res.status(404).json({});
 
+	let user = await UserModel.findOne({ username });
+	
+	return res.json(user);
+});
 
 export default router;
