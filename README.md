@@ -8,6 +8,7 @@ URL shortener written in Node.js
 
 > TODO: permission control  
 > TODO: clean and unify error message  
+> TODO: reorganize config
 
 | emoji | meanings                       |
 | :---: | :---                           |

@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"start": "ts-node ./src/app",
-		"dev": "DEBUG=api:* nodemon --watch src/ --ext ts start ",
+		"dev": "instant-markdown-d < ../README.md & DEBUG=api:* nodemon --watch src/ --ext ts start ",
 		"test": "DEBUG=api:* nodemon --watch src/ --ext ts src/test"
 	},
 	"dependencies": {
