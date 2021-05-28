@@ -54,15 +54,6 @@ const UserSchema = new Schema<IUser>({
 	}
 });
 
-UserSchema.pre('save', function(next){
-	let self = this;
-	bcrypt.hash(self.password, saltRound)
-	.then(password => {
-		this.password = password;
-		next();
-	});
-});
-
 UserSchema.methods.checkPassword = async function(password) {
 	const user = this;
 	return await bcrypt.compare(password, user.password);

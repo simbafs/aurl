@@ -13,6 +13,7 @@ import urlJoin from 'url-join';
 import errorMsg from '../../lib/errorMsg';
 import sendEmail from '../../lib/sendEmail';
 import trimEmail from '../../lib/trimEmail';
+import hashPW from '../../lib/password';
 
 // router.use((req, res, next) => {
 //     debug(req.route);
@@ -26,7 +27,7 @@ router.post('/', async (req, res, next) => {
 	// trim imput
 	email = trimEmail(email);
 	username = username.trim();
-	password = password.trim();
+	password = await hashPW(password.trim());
 
 	let a:any;
 	// check email

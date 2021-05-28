@@ -35,6 +35,7 @@ declare global{
 		// interface User extends IUser {}
 		interface Request {
 			user: IUser & Document
+			isOwner: (string) => boolean
 		}
 	}
 }
