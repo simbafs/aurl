@@ -23,6 +23,12 @@ router.post('/', async (req, res, next) => {
 	let { url, code } = req.body;
 	let user = req.user;
 	let canCustomCode = user && user.permission.includes('customCode');
+		debug({ username: user.username, t: user.username === config.get('guest.username') });
+	let state = user.username === config.get('guest.username') 
+		? 'unsafe' 
+		: user.verified 
+			? 'verified' 
+			: 'unverifyed';
 
 	let  error = errorMsg(res);
 	// check url
@@ -34,10 +40,12 @@ router.post('/', async (req, res, next) => {
 
 	if(error.end()) return;
 
+	// TODO: if this user has a same url record before and the code is randomly generate,
+	//       do not create a new one, use the old one instead
 	if(!canCustomCode || !code) code = await randomCode();
 
 	let owner = mongoose.Types.ObjectId(req.user._id);
-	let Url = await UrlModel.create({ url, code, owner });
+	let Url = await UrlModel.create({ url, code, owner, state });
 
 	return res.json(Url);
 });
