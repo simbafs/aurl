@@ -21,7 +21,7 @@ import trimEmail from '../../lib/trimEmail';
 
 router.post('/', async (req, res, next) => {
 	let error = errorMsg(res);
-	let { email, username, password, permission } = req.body;
+	let { email, username, password } = req.body;
 
 	// trim imput
 	email = trimEmail(email);
@@ -47,23 +47,13 @@ router.post('/', async (req, res, next) => {
 	if(!password) error.push('you need to set a pasword');
 	debug('password is fine');
 
-	// check and format permission
-	debug('ckecking and formating permissions');
-	if(permission){
-		permission = JSON.parse(permission);
-		if(!Array.isArray(permission) || !permission.every(i => typeof i === 'string')){
-			permission = null;
-		}
-	}
-	debug('permission is fine');
-
 	// if error, send them
 	if(error.end()) return;
 	// NOTE: the below version will trigger error in typescript but I don't know why. It should work
 	// error.end() && return;
 
-	debug({ username, email, password, permission });
-	let user = await UserModel.create({ username, email, password, permission });
+	debug({ username, email, password });
+	let user = await UserModel.create({ username, email, password });
 
 	let verifyUrl = urlJoin(config.get('baseUrl'), 'user/signup/verify', user.verifyCode);
 
