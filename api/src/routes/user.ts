@@ -56,4 +56,8 @@ router.put('/:username', async (req, res, next) => {
 	.catch(debug);
 });
 
+router.delete('/:username', (req, res, next) => {
+	res.json(`DELETE /user/${req.params.username}`);
+});
+
 export default router;

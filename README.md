@@ -26,7 +26,7 @@ URL shortener written in Node.js
 | ⬜️       | POST /user               | createUser           | create user with specified permissions in ${body.permission} |
 | ✅       | GET /user                | getUser              | get all users info                                           |
 | ✅       | GET /user/id             | getUser              | get specified users info                                     |
-| ⬜️       | PUT /user/id             | editUser             | edit users info                                              |
+| 🟨       | PUT /user/id             | editUser             | edit users info                                              |
 | ⬜️       | DELETE /user/id          | owner or deleteUser  | delete user                                                  |
 | ✅       | POST /user/signin        |                      | signin with password                                         |
 | ✅       | POST /user/signup        |                      | signup                                                       |

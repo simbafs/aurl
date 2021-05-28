@@ -86,5 +86,12 @@ router.get('/r/:code', async (req, res, next) => {
 	return res.redirect(url.url);
 });
 
+router.get('/:code', (req, res, next) => {
+	res.json(`PUT /url/${req.params.code}`);
+});
+
+router.delete('/:code', (req, res, next) => {
+	res.json(`DELETE /url/${req.params.code}`);
+});
 
 export default router;
