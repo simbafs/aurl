@@ -22,12 +22,12 @@ URL shortener written in Node.js
 | ✅       | POST /url                | custonCode(optional) | create a record for ${body.url} with ${body.code}            |
 | ✅       | GET /url/code            | getUrl(optional)     | get record information of ${params.code}                     |
 | ⬜️       | PUT /url/code            | owner or editUrl     | edit record information                                      |
-| ⬜️       | DELET /url/code          | owner or deleteUrl   | delete record                                                |
+| ✅       | DELET /url/code          | owner or deleteUrl   | delete record                                                |
 | ⬜️       | POST /user               | createUser           | create user with specified permissions in ${body.permission} |
 | ✅       | GET /user                | getUser              | get all users info                                           |
 | ✅       | GET /user/id             | getUser              | get specified users info                                     |
-| 🟨       | PUT /user/id             | editUser             | edit users info                                              |
-| ⬜️       | DELETE /user/id          | owner or deleteUser  | delete user                                                  |
+| ✅       | PUT /user/id             | editUser             | edit users info                                              |
+| ✅       | DELETE /user/id          | owner or deleteUser  | delete user                                                  |
 | ✅       | POST /user/signin        |                      | signin with password                                         |
 | ✅       | POST /user/signup        |                      | signup                                                       |
 | ✅       | POST /user/signup/verify |                      | verify email                                                 |

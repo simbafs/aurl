@@ -39,8 +39,7 @@ router.get('/:username', check([ 'getUser' ]), async (req, res, next) => {
 
 router.put('/:username', async (req, res, next) => {
 	// is not owner or do not have 'editUser'
-	// TODO: test
-	if(req.user.username !== req.params.username || req.user.permission.includes('editUser'))
+	if(req.user.username !== req.params.username && !req.user.permission.includes('editUser'))
 		return res.status(403).json('permission denied');
 
 	let { username } = req.params;
@@ -57,7 +56,17 @@ router.put('/:username', async (req, res, next) => {
 });
 
 router.delete('/:username', (req, res, next) => {
-	res.json(`DELETE /user/${req.params.username}`);
+	if(req.user.username !== req.params.username && !req.user.permission.includes('deleteUser'))
+		return res.status(403).json('permission denied');
+
+	let { username } = req.params;
+	UserModel.findOneAndUpdate({ username }, { delete: true }, { new: true })
+	.then((user: any) => {
+		debug(`delete user ${username}`, { user });
+		if(user) res.json('success');
+		else res.status(404).json('user not found');
+	})
+	.catch(debug);
 });
 
 export default router;

@@ -90,8 +90,19 @@ router.get('/:code', (req, res, next) => {
 	res.json(`PUT /url/${req.params.code}`);
 });
 
-router.delete('/:code', (req, res, next) => {
-	res.json(`DELETE /url/${req.params.code}`);
+router.delete('/:code', async (req, res, next) => {
+	let { code } = req.params;
+	let url = UrlModel.findOne({ code });
+	if(url.owner !== req.user._id && !req.user.permission.includes('deleteUser'))
+		return res.status(403).json('permission denied');
+
+	UrlModel.findOneAndUpdate({ code }, { delete: true }, { new: true })
+	.then((user: any) => {
+		debug(`delete url ${code}`);
+		if(user) res.json('success');
+		else res.status(404).json('url not found');
+	})
+	.catch(debug);
 });
 
 export default router;

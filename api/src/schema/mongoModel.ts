@@ -28,7 +28,11 @@ const UrlSchema = new Schema<IUrl>({
 		type: String,
 		default: 'unsafe'
 	},
-	secret: String
+	secret: String,
+	delete: {
+		type: Boolean,
+		default: false
+	}
 });
 
 UrlSchema.pre('save', async function(){
@@ -49,6 +53,10 @@ const UserSchema = new Schema<IUser>({
 		default: uuid
 	},
 	verified: {
+		type: Boolean,
+		default: false
+	},
+	delete: {
 		type: Boolean,
 		default: false
 	}

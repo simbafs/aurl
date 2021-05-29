@@ -6,7 +6,8 @@ export interface IUrl {
 	owner: typeof Schema.Types.ObjectId,
 	click: number,
 	state: string,
-	secret: string
+	secret: string,
+	delete: boolean
 }
 
 export interface IUser {
@@ -15,7 +16,8 @@ export interface IUser {
 	password: string,
 	permission: string[],
 	verifyCode: string,
-	verified: boolean
+	verified: boolean,
+	delete: boolean
 }
 
 export interface ILog {
