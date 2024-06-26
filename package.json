@@ -19,7 +19,7 @@
     "http-errors": "~1.6.3",
     "jquery": "^3.5.1",
     "moment-timezone": "^0.5.32",
-    "mongoose": "^5.11.10",
+    "mongoose": "^5.13.22",
     "morgan": "~1.9.1",
     "qrcode": "^1.4.4",
     "update-notifier": "^5.0.1"
